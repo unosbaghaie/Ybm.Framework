@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Ybm.Business;
+using Ybm.Framework.Eventing;
 
 namespace Cms.Business
 {
@@ -25,10 +26,29 @@ namespace Cms.Business
         [Transactional]
         public void CreateUser()
         {
+            IUserBusiness userNiz = ServiceFactory.CreateInstance<IUserBusiness>();
+            // fetch a record 
+
+            // create an entity
+
+            // update an entity 
+
+            // and so on 
+        }
+
+        
+
+        [SubscribeTo(typeof(IUserBusiness),"AnEventToSubscribeToInIUserBusiness")]
+        //this method would be invoked when the AnEventToSubscribeToInIUserBusiness event is invoked
+        public void CheckIfUserIsActive()
+        {
 
         }
 
 
-        
+
+
+
+
     }
 }
