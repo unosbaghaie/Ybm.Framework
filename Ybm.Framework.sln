@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.Framework", "Ybm.Framew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.CodeGenerator", "Ybm.CodeGenerator\Ybm.CodeGenerator.csproj", "{70382751-FB97-4A05-B3D4-D6AB366610A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.Business", "Ybm.Business\Ybm.Business.csproj", "{B8B33621-8E69-43E6-8CEE-59D9879CDED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.Common", "Ybm.Common\Ybm.Common.csproj", "{10128F45-4361-4829-BB84-FE34E2D722E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{70382751-FB97-4A05-B3D4-D6AB366610A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70382751-FB97-4A05-B3D4-D6AB366610A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70382751-FB97-4A05-B3D4-D6AB366610A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B33621-8E69-43E6-8CEE-59D9879CDED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B33621-8E69-43E6-8CEE-59D9879CDED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B33621-8E69-43E6-8CEE-59D9879CDED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B33621-8E69-43E6-8CEE-59D9879CDED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10128F45-4361-4829-BB84-FE34E2D722E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10128F45-4361-4829-BB84-FE34E2D722E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10128F45-4361-4829-BB84-FE34E2D722E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10128F45-4361-4829-BB84-FE34E2D722E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
