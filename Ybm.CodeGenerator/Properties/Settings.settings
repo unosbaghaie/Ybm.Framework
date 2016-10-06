@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cms.CodeGenerator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="dllPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Administrator\Documents\Visual Studio 2015\Projects\CMS\Cms.Common\bin\Debug\Cms.Common.dll</Value>
+    </Setting>
+    <Setting Name="ModelPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Administrator\Documents\Visual Studio 2015\Projects\CMS\Cms.Common\Models\</Value>
+    </Setting>
+    <Setting Name="BusinessPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Administrator\Documents\Visual Studio 2015\Projects\CMS\Cms.Business\Concrete\</Value>
+    </Setting>
+    <Setting Name="IBusinessPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Administrator\Documents\Visual Studio 2015\Projects\CMS\Cms.Business\Interface\</Value>
+    </Setting>
+    <Setting Name="MapperPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Administrator\Documents\Visual Studio 2015\Projects\CMS\Cms.UI\Infrastructure\Mapper\</Value>
+    </Setting>
+    <Setting Name="ViewmodelPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Administrator\Documents\Visual Studio 2015\Projects\CMS\Cms.UI\Infrastructure\ViewModels\</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
