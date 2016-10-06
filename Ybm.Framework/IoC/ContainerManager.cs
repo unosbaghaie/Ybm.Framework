@@ -32,7 +32,7 @@ namespace Ybm.Framework
             var appDomain = System.AppDomain.CurrentDomain;
             var basePath = appDomain.RelativeSearchPath ?? appDomain.BaseDirectory;
             var path = basePath + "\\";
-            container.Install(FromAssembly.InDirectory(new AssemblyFilter(path, "Cms.Business.dll")));
+            container.Install(FromAssembly.InDirectory(new AssemblyFilter(path, "Ybm.Business.dll")));
 
         }
 
