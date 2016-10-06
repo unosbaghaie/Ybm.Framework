@@ -44,6 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\packages\Kendo.Mvc\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -77,6 +89,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -201,6 +216,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Authorization\ClaimBasedAuthorzationAttribute.cs" />
+    <Compile Include="Infrastructure\Authorization\DerivedPasswordValidator.cs" />
+    <Compile Include="Infrastructure\Authorization\TokenCategoryAttribute.cs" />
+    <Compile Include="Infrastructure\Authorization\UserRight.cs" />
+    <Compile Include="Infrastructure\Filter\CustomHandleErrorAttribute.cs" />
+    <Compile Include="Infrastructure\Filter\ValidateAjaxAttribute.cs" />
+    <Compile Include="Infrastructure\Helper\CmsFilterDataSection.cs" />
+    <Compile Include="Infrastructure\Identity\ApplicationDbContext.cs" />
+    <Compile Include="Infrastructure\Identity\ApplicationSignInManager.cs" />
+    <Compile Include="Infrastructure\Identity\ApplicatioUserManager.cs" />
+    <Compile Include="Infrastructure\Identity\CustomUser.cs" />
+    <Compile Include="Infrastructure\Mvc\Extension.cs" />
+    <Compile Include="Infrastructure\Mvc\MvcController.cs" />
+    <Compile Include="Infrastructure\Startup.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -208,6 +237,73 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\commonDirective\editInPlace.js" />
+    <Content Include="app\commonDirective\onfinishrender.js" />
+    <Content Include="app\js\app.js" />
+    <Content Include="app\js\CustomGridActions.js" />
+    <Content Include="app\js\directives\dynamic.js" />
+    <Content Include="app\js\serviceBase.js" />
+    <Content Include="app\js\serviceBaseAngular.js" />
+    <Content Include="app\lib\angular-route\angular-route.js" />
+    <Content Include="app\lib\angular-route\angular-route.min.js" />
+    <Content Include="app\lib\JalaliDate\fa-IR.js" />
+    <Content Include="app\lib\JalaliDate\JalaliDate.js" />
+    <Content Include="app\lib\JalaliDate\kendo.calendar.js" />
+    <Content Include="app\lib\JalaliDate\kendo.core.js" />
+    <Content Include="app\lib\JalaliDate\kendo.datepicker.js" />
+    <Content Include="app\lib\JalaliDate\kendo.popup.js" />
+    <Content Include="app\lib\uiTemplate\css\font-awesome.min.css" />
+    <Content Include="app\lib\uiTemplate\css\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="app\lib\uiTemplate\css\jquery.dropdown.css" />
+    <Content Include="app\lib\uiTemplate\css\material-icons.css" />
+    <Content Include="app\lib\uiTemplate\css\pnotify.css" />
+    <Content Include="app\lib\uiTemplate\css\prettify.css" />
+    <Content Include="app\lib\uiTemplate\css\select2.css" />
+    <Content Include="app\lib\uiTemplate\css\skylo.css" />
+    <Content Include="app\lib\uiTemplate\css\styles.css" />
+    <Content Include="app\lib\uiTemplate\css\styles.min.css" />
+    <Content Include="app\lib\uiTemplate\fonts\font-awesome\fontawesome-webfonte0a5.svg" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\FontLicense.txt" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRAN Sans.html" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\style.css" />
+    <Content Include="app\lib\uiTemplate\fonts\MaterialIcons\MaterialIcons-Regular.svg" />
+    <Content Include="app\lib\uiTemplate\fonts\new Yekan\Yekan.svg" />
+    <Content Include="app\lib\uiTemplate\image\1.jpg" />
+    <Content Include="app\lib\uiTemplate\image\2.jpg" />
+    <Content Include="app\lib\uiTemplate\image\3.jpg" />
+    <Content Include="app\lib\uiTemplate\image\4.jpg" />
+    <Content Include="app\lib\uiTemplate\image\5.jpg" />
+    <Content Include="app\lib\uiTemplate\image\6.jpg" />
+    <Content Include="app\lib\uiTemplate\image\avatar_08.png" />
+    <Content Include="app\lib\uiTemplate\image\blog_10.jpg" />
+    <Content Include="app\lib\uiTemplate\image\logo-dark.png" />
+    <Content Include="app\lib\uiTemplate\image\logo-white.png" />
+    <Content Include="app\lib\uiTemplate\image\profile-bg-material.png" />
+    <Content Include="app\lib\uiTemplate\image\select2\select2-spinner.gif" />
+    <Content Include="app\lib\uiTemplate\image\select2\select2.png" />
+    <Content Include="app\lib\uiTemplate\image\select2\select2x2.png" />
+    <Content Include="app\lib\uiTemplate\js\application.js" />
+    <Content Include="app\lib\uiTemplate\js\bootstrap-tabdrop.js" />
+    <Content Include="app\lib\uiTemplate\js\bootstrap.min.js" />
+    <Content Include="app\lib\uiTemplate\js\demo-switcher.js" />
+    <Content Include="app\lib\uiTemplate\js\demo.js" />
+    <Content Include="app\lib\uiTemplate\js\enquire.min.js" />
+    <Content Include="app\lib\uiTemplate\js\fileinput.min.js" />
+    <Content Include="app\lib\uiTemplate\js\jquery-1.10.2.min.js" />
+    <Content Include="app\lib\uiTemplate\js\jquery.bootstrap-touchspin.js" />
+    <Content Include="app\lib\uiTemplate\js\jquery.dropdown.js" />
+    <Content Include="app\lib\uiTemplate\js\jquery.nanoscroller.min.js" />
+    <Content Include="app\lib\uiTemplate\js\jquery.sparklines.min.js" />
+    <Content Include="app\lib\uiTemplate\js\jqueryui-1.10.3.min.js" />
+    <Content Include="app\lib\uiTemplate\js\material.min.js" />
+    <Content Include="app\lib\uiTemplate\js\pnotify.min.js" />
+    <Content Include="app\lib\uiTemplate\js\prettify.js" />
+    <Content Include="app\lib\uiTemplate\js\ripples.min.js" />
+    <Content Include="app\lib\uiTemplate\js\select2.min.js" />
+    <Content Include="app\lib\uiTemplate\js\skylo.js" />
+    <Content Include="app\lib\uiTemplate\js\velocity.min.js" />
+    <Content Include="app\lib\uiTemplate\js\velocity.ui.min.js" />
+    <Content Include="app\lib\uiTemplate\js\wijets.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -221,6 +317,42 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="app\lib\angular-route\angular-route.min.js.map" />
+    <Content Include="app\lib\uiTemplate\css\styles.less" />
+    <Content Include="app\lib\uiTemplate\fonts\font-awesome\fontawesome-webfontd41d.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\font-awesome\fontawesome-webfonte0a5.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\font-awesome\fontawesome-webfonte0a5.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\font-awesome\fontawesome-webfonte0a5.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\font-awesome\fontawesome-webfonte0a5.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Bold-web.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Bold-web.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Bold-web.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Bold-web.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Light-web.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Light-web.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Light-web.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Light-web.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Medium-web.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Medium-web.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Medium-web.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-Medium-web.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-UltraLight-web.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-UltraLight-web.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-UltraLight-web.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-UltraLight-web.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-web.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-web.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-web.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\IRANSans-web.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\IranSans\___د_ç___à_د_î _د___ز___د_»_ç.pdf" />
+    <Content Include="app\lib\uiTemplate\fonts\MaterialIcons\MaterialIcons-Regular.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\MaterialIcons\MaterialIcons-Regular.ijmap" />
+    <Content Include="app\lib\uiTemplate\fonts\MaterialIcons\MaterialIcons-Regular.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\MaterialIcons\MaterialIcons-Regular.woff" />
+    <Content Include="app\lib\uiTemplate\fonts\MaterialIcons\MaterialIcons-Regular.woff2" />
+    <Content Include="app\lib\uiTemplate\fonts\new Yekan\Yekan.eot" />
+    <Content Include="app\lib\uiTemplate\fonts\new Yekan\Yekan.ttf" />
+    <Content Include="app\lib\uiTemplate\fonts\new Yekan\Yekan.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -270,6 +402,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Infrastructure\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -278,6 +411,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ybm.Business\Ybm.Business.csproj">
+      <Project>{b8b33621-8e69-43e6-8cee-59d9879cded1}</Project>
+      <Name>Ybm.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ybm.Common\Ybm.Common.csproj">
+      <Project>{10128f45-4361-4829-bb84-fe34e2d722e5}</Project>
+      <Name>Ybm.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ybm.Framework\Ybm.Framework.csproj">
+      <Project>{01842f38-225d-46c6-ae1d-e0bc327ad507}</Project>
+      <Name>Ybm.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,7 +11,7 @@ using System.Web;
 using Ybm.Business;
 using Ybm.Framework.Eventing;
 
-namespace Cms.Business
+namespace Ybm.Business
 {
     public partial class UserBusiness : Service<User>, IUserBusiness
     {

@@ -1,12 +1,12 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Cms.Business;
+using Ybm.Business;
 using Ybm.Business;
 using Ybm.Common.Models;
 using Ybm.Framework.Aop;
 
-namespace Cms.Framework
+namespace Ybm.Framework
 {
     public class ServicesInstaller : IWindsorInstaller
     {
