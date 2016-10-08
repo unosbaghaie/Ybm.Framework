@@ -5,9 +5,9 @@ It is a framework to facilitate writing web based applications
 the first version is done at 2016/10/06 
 features:
 
-_ Instanciate Business layers classese in UI or Business itself
+_ Instanciate Business layer classese in UI or Business itself
 
-        IUserBusiness userNiz = ServiceFactory.CreateInstance<IUserBusiness>();
+        IUserBusiness userBiz = ServiceFactory.CreateInstance<IUserBusiness>();
 
 _ Tansactional methods in Business Layer
 
