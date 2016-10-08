@@ -12,7 +12,7 @@ using Ybm.Framework;
 
 namespace Ybm.UI
 {
-    public static class CmsFilterData
+    public static class YbmFilterData
     {
         public static MvcHtmlString CmsFilerDataSection(this HtmlHelper helper, List<CustomFilterDescriptor> filterControlsModel, int? User_Id)
         {
