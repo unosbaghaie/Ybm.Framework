@@ -57,10 +57,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\AspNetRole.cs" />
+    <Compile Include="Models\AspNetUser.cs" />
+    <Compile Include="Models\AspNetUserClaim.cs" />
+    <Compile Include="Models\AspNetUserLogin.cs" />
+    <Compile Include="Models\AspNetUserRole.cs" />
+    <Compile Include="Models\ErrorLog.cs" />
+    <Compile Include="Models\ErrorType.cs" />
+    <Compile Include="Models\Mapping\AspNetRoleMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserClaimMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserLoginMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserMap.cs" />
+    <Compile Include="Models\Mapping\AspNetUserRoleMap.cs" />
+    <Compile Include="Models\Mapping\ErrorLogMap.cs" />
+    <Compile Include="Models\Mapping\ErrorTypeMap.cs" />
+    <Compile Include="Models\Mapping\PageMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TokenCategoryMap.cs" />
+    <Compile Include="Models\Mapping\TokenMap.cs" />
+    <Compile Include="Models\Mapping\UserGroupMap.cs" />
+    <Compile Include="Models\Mapping\UserGroupTokenMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Page.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Token.cs" />
+    <Compile Include="Models\TokenCategory.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserGroup.cs" />
+    <Compile Include="Models\UserGroupToken.cs" />
     <Compile Include="Models\YbmContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

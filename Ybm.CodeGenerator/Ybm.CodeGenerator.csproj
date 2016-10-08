@@ -7,8 +7,8 @@
     <ProjectGuid>{70382751-FB97-4A05-B3D4-D6AB366610A3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cms.CodeGenerator</RootNamespace>
-    <AssemblyName>Cms.CodeGenerator</AssemblyName>
+    <RootNamespace>Ybm.CodeGenerator</RootNamespace>
+    <AssemblyName>Ybm.CodeGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -78,6 +78,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

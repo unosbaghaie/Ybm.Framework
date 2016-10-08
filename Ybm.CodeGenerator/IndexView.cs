@@ -50,7 +50,7 @@ namespace Ybm.CodeGenerator
 
     @Html.ActionLink(""جدید"", ""{type.Name}Create"", ""{type.Name}"", new {{ @class = ""btn btn-default"" }})
 
-    @(Html.Kendo().Grid<Cms.UI.Infrastructure.ViewModels.{type.Name}ViewModel>()
+    @(Html.Kendo().Grid<Ybm.UI.Infrastructure.ViewModels.{type.Name}ViewModel>()
                       .Name(""{type.Name}Grid"")
                       .Columns(columns =>
                       {{

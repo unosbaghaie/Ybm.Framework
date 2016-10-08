@@ -47,7 +47,7 @@
             this.textBoxModelPath.Name = "textBoxModelPath";
             this.textBoxModelPath.Size = new System.Drawing.Size(571, 20);
             this.textBoxModelPath.TabIndex = 0;
-            this.textBoxModelPath.Text = "C:\\WebProject\\CMS\\CMS\\Cms.Common\\Models";
+            this.textBoxModelPath.Text = "C:\\WebProject\\Ybm\\Ybm\\Ybm.Common\\Models";
             // 
             // label1
             // 
@@ -83,7 +83,7 @@
             this.textBoxEntityDLLPath.Name = "textBoxEntityDLLPath";
             this.textBoxEntityDLLPath.Size = new System.Drawing.Size(571, 20);
             this.textBoxEntityDLLPath.TabIndex = 11;
-            this.textBoxEntityDLLPath.Text = "C:\\WebProject\\CMS\\Cms\\Cms.Common\\bin\\Debug\\Cms.Common.dll";
+            this.textBoxEntityDLLPath.Text = "C:\\WebProject\\Ybm\\Ybm\\Ybm.Common\\bin\\Debug\\Ybm.Common.dll";
             // 
             // buttonSetpath
             // 

@@ -34,11 +34,11 @@ namespace Ybm.CodeGenerator
                 if (fileNameWithoutExtension.StartsWith("AspNet"))
                     continue;
 
-                if (fileNameWithoutExtension.StartsWith("CMSContext"))
+                if (fileNameWithoutExtension.StartsWith("YbmContext"))
                     continue;
 
                 var className = fileNameWithoutExtension;
-                var nameSpace = "Cms.Business";
+                var nameSpace = "Ybm.Business";
 
 
             str.Append($@"
@@ -52,7 +52,7 @@ namespace {nameSpace}
     public partial class {className}Business : Service<{className}>, I{className}Business
     {{
         public {className}Business()
-            :base(ContainerManager.Container.Resolve<CMSContext>())
+            :base(ContainerManager.Container.Resolve<YbmContext>())
         {{
                 base.PopulateEvents(this);
         }}

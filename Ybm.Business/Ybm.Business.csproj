@@ -58,9 +58,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\ErrorLogBusiness.cs" />
+    <Compile Include="Concrete\ErrorTypeBusiness.cs" />
+    <Compile Include="Concrete\PageBusiness.cs" />
+    <Compile Include="Concrete\sysdiagramBusiness.cs" />
+    <Compile Include="Concrete\TokenBusiness.cs" />
+    <Compile Include="Concrete\TokenCategoryBusiness.cs" />
     <Compile Include="Concrete\UserBusiness.cs" />
+    <Compile Include="Concrete\UserGroupBusiness.cs" />
+    <Compile Include="Concrete\UserGroupTokenBusiness.cs" />
     <Compile Include="Config\ServicesInstaller.cs" />
+    <Compile Include="Interface\IErrorLogBusiness.cs" />
+    <Compile Include="Interface\IErrorTypeBusiness.cs" />
+    <Compile Include="Interface\IPageBusiness.cs" />
+    <Compile Include="Interface\IsysdiagramBusiness.cs" />
+    <Compile Include="Interface\ITokenBusiness.cs" />
+    <Compile Include="Interface\ITokenCategoryBusiness.cs" />
     <Compile Include="Interface\IUserBusiness.cs" />
+    <Compile Include="Interface\IUserGroupBusiness.cs" />
+    <Compile Include="Interface\IUserGroupTokenBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

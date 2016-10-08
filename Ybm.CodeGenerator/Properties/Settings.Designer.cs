@@ -25,8 +25,8 @@ namespace Ybm.CodeGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\CMS\\Cms.Common\\bin\\D" +
-            "ebug\\Cms.Common.dll")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\Ybm\\Ybm.Common\\bin\\D" +
+            "ebug\\Ybm.Common.dll")]
         public string dllPath {
             get {
                 return ((string)(this["dllPath"]));
@@ -35,7 +35,7 @@ namespace Ybm.CodeGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\CMS\\Cms.Common\\Model" +
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\Ybm\\Ybm.Common\\Model" +
             "s\\")]
         public string ModelPath {
             get {
@@ -45,7 +45,7 @@ namespace Ybm.CodeGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\CMS\\Cms.Business\\Con" +
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\Ybm\\Ybm.Business\\Con" +
             "crete\\")]
         public string BusinessPath {
             get {
@@ -55,7 +55,7 @@ namespace Ybm.CodeGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\CMS\\Cms.Business\\Int" +
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\Ybm\\Ybm.Business\\Int" +
             "erface\\")]
         public string IBusinessPath {
             get {
@@ -65,7 +65,7 @@ namespace Ybm.CodeGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\CMS\\Cms.UI\\Infrastru" +
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\Ybm\\Ybm.UI\\Infrastru" +
             "cture\\Mapper\\")]
         public string MapperPath {
             get {
@@ -75,7 +75,7 @@ namespace Ybm.CodeGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\CMS\\Cms.UI\\Infrastru" +
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Administrator\\Documents\\Visual Studio 2015\\Projects\\Ybm\\Ybm.UI\\Infrastru" +
             "cture\\ViewModels\\")]
         public string ViewmodelPath {
             get {

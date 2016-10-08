@@ -34,7 +34,7 @@ namespace Ybm.CodeGenerator
                     continue;
 
 
-                var nameSpace = "Cms.UI.Infrastructure.ViewModels";
+                var nameSpace = "Ybm.UI.Infrastructure.ViewModels";
 
 
                 str.Append($@"

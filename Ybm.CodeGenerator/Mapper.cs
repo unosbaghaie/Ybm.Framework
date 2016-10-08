@@ -32,12 +32,12 @@ namespace Ybm.CodeGenerator
                 if (fileNameWithoutExtension.StartsWith("AspNet"))
                     continue;
 
-                if (fileNameWithoutExtension.StartsWith("CmsContext"))
+                if (fileNameWithoutExtension.StartsWith("YbmContext"))
                     continue;
 
 
                 var className = fileNameWithoutExtension;
-                var nameSpace = "Cms.UI.Infrastructure.Mapper";
+                var nameSpace = "Ybm.UI.Infrastructure.Mapper";
 
 
                 str.Append($@"using AutoMapper;
