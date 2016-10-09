@@ -1,4 +1,4 @@
-Welcome to the Ybm.Framework wiki!
+Welcome to the Ybm.Framework description
 
 It is a framework to facilitate writing web based applications
 
@@ -30,4 +30,39 @@ _ Subsribe and publish
         }
         
         
+you can override some methods in business layer to handle Create, Upate and delete entities
+
+        public override void OnBeforeSavingRecord(object sender, EntitySavingEventArgs<User> e)
+        {
+            base.OnBeforeSavingRecord(sender, e);
+        }
+        public override void OnSavingRecord(object sender, EntitySavingEventArgs<User> e)
+        {
+            base.OnSavingRecord(sender, e);
+        }
+        public override void OnRecordSaved(object sender, EntitySavingEventArgs<User> e)
+        {
+            base.OnRecordSaved(sender, e);
+        }
+        public override void OnUpdatingRecord(object sender, EntitySavingEventArgs<User> e)
+        {
+            base.OnUpdatingRecord(sender, e);
+        }
+        public override void OnRecordUpdated(object sender, EntitySavingEventArgs<User> e)
+        {
+            base.OnRecordUpdated(sender, e);
+        }
+
+        public override void OnBeforeDeletingRecord(object sender, EntityDeletingEventArgs<User> e)
+        {
+            base.OnBeforeDeletingRecord(sender, e);
+        }
+        public override void OnDeletingRecord(object sender, EntityDeletingEventArgs<User> e)
+        {
+            base.OnDeletingRecord(sender, e);
+        }
+        public override void OnRecordDeleted(object sender, EntityDeletingEventArgs<User> e)
+        {
+            base.OnRecordDeleted(sender, e);
+        }
         
