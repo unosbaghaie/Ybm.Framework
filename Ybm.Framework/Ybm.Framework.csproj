@@ -48,7 +48,28 @@
     <Reference Include="Kendo.Mvc">
       <HintPath>..\packages\Kendo.Mvc\Kendo.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -74,6 +95,7 @@
     <Compile Include="Attribute\BroadcasterAttribute.cs" />
     <Compile Include="Attribute\TransactionalAttribute.cs" />
     <Compile Include="Collections\Triple.cs" />
+    <Compile Include="Configuration\StartupConfiguration.cs" />
     <Compile Include="CustomFilterDescriptor.cs" />
     <Compile Include="Db\EfCommandInterceptor.cs" />
     <Compile Include="Engine\Engine.cs" />
@@ -88,6 +110,10 @@
     <Compile Include="ExpressionHelper\ExpressionBuilder.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Extension\IQueryableExtension.cs" />
+    <Compile Include="Identity2\ApplicationDbContext.cs" />
+    <Compile Include="Identity2\ApplicationSignInManager.cs" />
+    <Compile Include="Identity2\ApplicatioUserManager.cs" />
+    <Compile Include="Identity2\CustomUser.cs" />
     <Compile Include="Interface\IDeleteService.cs" />
     <Compile Include="Interface\IFetchService.cs" />
     <Compile Include="Interface\IFilterable.cs" />
@@ -113,6 +139,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mvc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DbFiles\Ybm.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbFiles\Ybm.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

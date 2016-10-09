@@ -8,23 +8,19 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Ybm.Framework;
 
-namespace Ybm.UI
+namespace Cms.UI
 {
-    public static class YbmFilterData
+    public static class FilterDataHelper
     {
-        public static MvcHtmlString CmsFilerDataSection(this HtmlHelper helper, List<CustomFilterDescriptor> filterControlsModel, int? User_Id)
+        public static MvcHtmlString FilterFor(this HtmlHelper helper, List<CustomFilterDescriptor> filterControlsModel, int? User_Id)
         {
-            TagBuilder tag = new TagBuilder("FilterData");
-
             StringBuilder html = new StringBuilder();
-
             html.AppendLine($@"<div class=""form-group row"">");
 
             foreach (var item in filterControlsModel)
             {
-                html.AppendLine($@"<div class=""col-lg-2"">");
+                html.AppendLine($@"<div class=""col-lg-1"">");
                 html.AppendLine($@"<label class=""form-control-label control-label"" for='{ item.Member }'>{ item.Name}</label>");
                 html.AppendLine($@"</div>");
 
@@ -38,7 +34,7 @@ namespace Ybm.UI
                 else
                 if ((item.MemberType == typeof(bool)) || (item.MemberType == typeof(bool?)))
                 {
-                    html.AppendLine($@"<div class=""col-lg-4"">");
+                    html.AppendLine($@"<div class=""col-lg-2"">");
                     html.AppendLine($@"<select id =""{ item.Member }"" class=""input-large form-control FilterDescriptor"">");
                     html.AppendLine($@"<option value="""" selected >❓</option>");
                     html.AppendLine($@"<option value =""true"" >✅</option>");
@@ -50,7 +46,7 @@ namespace Ybm.UI
                 else
                 if (item.MemberType == typeof(string))
                 {
-                    html.AppendLine($@"<div class=""col-lg-4"">");
+                    html.AppendLine($@"<div class=""col-lg-2"">");
                     html.AppendLine($@"<input class=""form-control FilterDescriptor"" id='{ item.Member }' name='{ item.Member }' type=""text"" value="""">");
                     html.AppendLine($@"</div>");
                 }
@@ -59,14 +55,14 @@ namespace Ybm.UI
                    || (item.MemberType == typeof(decimal)) || (item.MemberType == typeof(decimal?))
                    )
                 {
-                    html.AppendLine($@"<div class=""col-lg-4"">");
+                    html.AppendLine($@"<div class=""col-lg-2"">");
                     html.AppendLine($@"<input type=""number"" class=""form-control FilterDescriptor"" id='{ item.Member }' name='{ item.Member }'  value="""">");
                     html.AppendLine($@"</div>");
                 }
                 else
                 if ((item.MemberType == typeof(DateTime)) || (item.MemberType == typeof(DateTime?)))
                 {
-                    html.AppendLine($@"<div class=""col-lg-4"">");
+                    html.AppendLine($@"<div class=""col-lg-2"">");
                     html.AppendLine($@"<input class=""form-control FilterDescriptor"" id='{ item.Member }' name='{ item.Member }' type=""text"" value="""">");
                     html.AppendLine($@"</div>");
 
@@ -87,7 +83,12 @@ namespace Ybm.UI
 
             }
             html.AppendLine($@"</div>");
-            html.AppendLine($@"<button type = ""button"" title=""Test"" ng-click=""FilterDescriptorClick()"" > جستجو</button>");
+
+            html.AppendLine($@"<div class=""col-lg-1"">");
+            html.AppendLine($@"<button type = ""button"" class=""btn btn-primary btn-raised"" title=""Test"" ng-click=""FilterDescriptorClick()"" > جستجو</button>");
+            html.AppendLine($@"</div>");
+
+            //html.AppendLine($@"<button type = ""button"" title=""Test"" ng-click=""FilterDescriptorClick()"" > جستجو</button>");
 
 
             return MvcHtmlString.Create(html.ToString());
@@ -109,11 +110,11 @@ namespace Ybm.UI
             //    list = instance.FetchMulti().Select(q => new { q.Id, q.Name }).ToList();
             //}
             //else
-            //if (tableName == "User")
-            //{
-            //    IUserBusiness instance = ServiceFactory.CreateInstance<IUserBusiness>();
-            //    list = instance.FetchMulti().Select(q => new { q.Id, Name = q.FirstName + " " + q.LastName }).ToList();
-            //}
+            if (tableName == "User")
+            {
+                IUserBusiness instance = ServiceFactory.CreateInstance<IUserBusiness>();
+                list = instance.FetchMulti().Select(q => new { q.Id, Name = q.FirstName + " " + q.LastName }).ToList();
+            }
             //else
             //if (tableName == "Complaint")
             //{
@@ -141,7 +142,7 @@ namespace Ybm.UI
 
 
 
-            html.AppendLine($@"<div class=""col-lg-4"">");
+            html.AppendLine($@"<div class=""col-lg-2"">");
             html.AppendLine($@"<select id =""{ item.Member }"" class=""input-large form-control FilterDescriptor"">");
             html.AppendLine($@"<option value = """" > یک گزینه را انتخاب کنید </option>");
             //foreach (var itm in list)
