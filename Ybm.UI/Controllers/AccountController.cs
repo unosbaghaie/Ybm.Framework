@@ -129,98 +129,6 @@ namespace Ybm.UI.Controllers
             else
                 return View("Index",model);
 
-
-            #region MyRegion
-            //    if (result == SignInStatus.Success)
-            //    {
-            //        var customUser = signInManager.UserManager.Find(model.UserName, model.Password);
-
-            //        if (customUser == null)
-            //        {
-            //            message = "نام کاربری یا رمز عبور نادرست است";
-            //        }
-            //        else
-            //        {
-            //            var user = userBiz.FirstOrDefault(x => x.Id == customUser.User_Id);
-
-            //            var userGroupTokens = userGroupTokenBiz.FetchMulti(x => x.UserGroup_Id == user.UserGroup_Id).ToList();
-
-            //            List<Claim> claims = new List<Claim>();
-            //            foreach (var userGroupToken in userGroupTokens)
-            //            {
-            //                claims.Add(new Claim("UserRight", userGroupToken.Token.Name));
-            //            }
-
-
-            //            //var ident = new ClaimsIdentity(
-            //            //new[]
-            //            //{
-            //            //// adding following 2 claim just for supporting default antiforgery provider
-            //            //new Claim(ClaimTypes.NameIdentifier, model.UserName),
-            //            //new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "ASP.NET Identity", "http://www.w3.org/2001/XMLSchema#string"),
-
-            //            //new Claim(ClaimTypes.Name, model.UserName),
-            //            //// populate assigned user rightID's form the DB and add each one as a claim  
-            //            //new Claim("UserRight","FirstAssignedUserRightID"),
-            //            //new Claim("UserRight","SecondAssignedUserRightID"),
-            //            //},
-            //            //DefaultAuthenticationTypes.ApplicationCookie);
-
-            //            var ident = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
-
-            //            HttpContext.GetOwinContext().Authentication.SignIn(
-            //               new AuthenticationProperties { IsPersistent = model.RememberMe }, ident);
-
-            //            isLogin = true;
-            //            url = Url.Action("Index", "Home");
-            //            message = string.Format("کاربر {0} خوش آمدید", customUser.UserName);
-
-            //            Session["UserId"] = user.Id;
-
-            //            #region [Remember me]
-            //            if (model.RememberMe)
-            //            {
-
-            //                var userHashKey = Guid.NewGuid();
-            //                user.UserHashKey = userHashKey;
-            //                userBiz.Update(user);
-
-            //                strUserHashKey = Convert.ToBase64String(userHashKey.ToByteArray());
-
-            //            }
-            //            else
-            //            {
-            //                if (string.IsNullOrEmpty(model.UserHashKey))
-            //                {
-            //                    user.UserHashKey = null;
-            //                    userBiz.Update(user);
-            //                }
-
-            //            }
-            //            Response.Redirect("http://localhost:23209/");
-            //            #endregion
-
-
-            //        }
-            //    }
-            //    else if (result == SignInStatus.LockedOut)
-            //    {
-            //        message = "کاربر قفل شده است.لطفا با پشتیبانی تماس بگیرید";
-
-            //    }
-            //    else if (result == SignInStatus.RequiresVerification)
-            //    {
-            //        message = "حساب کاربری شما هنوز تایید نشده است.لطفا کد فعال سازی را ارسال کنید";
-            //    }
-            //    else
-            //    {
-            //        message = "نام کاربری یا رمز عبور نادرست است";
-            //    }
-
-            //} 
-            #endregion
-
-
             return Json(new { isLogin = isLogin, message = message, url = url, strUserHashKey = strUserHashKey, userName = model.UserName });
         }
 
@@ -407,14 +315,6 @@ namespace Ybm.UI.Controllers
                     return Json(new { message = message, isChange = isChange });
                 }
 
-                //ApplicationDbContext context = new ApplicationDbContext();
-                //UserStore<CustomUser> store = new UserStore<CustomUser>(context);
-                //UserManager<CustomUser> UserManager = new UserManager<CustomUser>(store);
-                //String hashedNewPassword = userManager.PasswordHasher.HashPassword(model.NewPassword);
-                //CustomUser cUser = await store.FindByNameAsync(model.UserName);
-                //await store.SetPasswordHashAsync(cUser, hashedNewPassword);
-                //await store.UpdateAsync(cUser);
-
                 await ResetPassword(model.NewPassword, model.UserName);
 
                 isChange = true;
@@ -452,8 +352,6 @@ namespace Ybm.UI.Controllers
 
             var newPassword = GenerateNewPassword();
             await ResetPassword(newPassword, userName);
-
-            //userBiz.SendForgottenPasswordMessage(customUser.User_Id, newPassword);
 
             isChange = true;
             message = "بازیابی رمز عبور با موفقیت انجام شد.یک ایمیل حاوی رمز عبور برای شما ارسال خواهد شد";
