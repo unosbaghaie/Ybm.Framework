@@ -12,9 +12,6 @@ namespace Ybm.UI.Infrastructure.Authorization
 
         public string CategoryName { get; set; }
         public string AreaName { get; set; }
-
-        // in the real world you could get claim value form the DB, 
-        // I simplified the example 
         public string TokenName { get; set; }
         public string ClaimType { get; set; }
         public string Value { get; set; }
