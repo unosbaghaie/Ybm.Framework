@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public AspNetRoleMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.Name });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)
@@ -23,6 +23,18 @@ namespace Ybm.Common.Models.Mapping
             this.ToTable("AspNetRoles");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
+
+            // Relationships
+            this.HasMany(t => t.AspNetUsers)
+                .WithMany(t => t.AspNetRoles)
+                .Map(m =>
+                    {
+                        m.ToTable("AspNetUserRoles");
+                        m.MapLeftKey("RoleId");
+                        m.MapRightKey("UserId");
+                    });
+
+
         }
     }
 }

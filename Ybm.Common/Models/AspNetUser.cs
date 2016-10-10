@@ -5,6 +5,13 @@ namespace Ybm.Common.Models
 {
     public partial class AspNetUser
     {
+        public AspNetUser()
+        {
+            this.AspNetUserClaims = new List<AspNetUserClaim>();
+            this.AspNetUserLogins = new List<AspNetUserLogin>();
+            this.AspNetRoles = new List<AspNetRole>();
+        }
+
         public string Id { get; set; }
         public int User_Id { get; set; }
         public string Email { get; set; }
@@ -18,5 +25,9 @@ namespace Ybm.Common.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public PageMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.PageName, t.PageHref, t.IsVisible, t.UserGroup_Id, t.CreationDateTime, t.Priority, t.SelectorCssClass, t.PageScope_Id });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)
@@ -22,18 +22,9 @@ namespace Ybm.Common.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(150);
 
-            this.Property(t => t.UserGroup_Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            this.Property(t => t.Priority)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.SelectorCssClass)
                 .IsRequired()
                 .HasMaxLength(50);
-
-            this.Property(t => t.PageScope_Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
             this.ToTable("Pages");
@@ -47,6 +38,12 @@ namespace Ybm.Common.Models.Mapping
             this.Property(t => t.Priority).HasColumnName("Priority");
             this.Property(t => t.SelectorCssClass).HasColumnName("SelectorCssClass");
             this.Property(t => t.PageScope_Id).HasColumnName("PageScope_Id");
+
+            // Relationships
+            this.HasRequired(t => t.UserGroup)
+                .WithMany(t => t.Pages)
+                .HasForeignKey(d => d.UserGroup_Id);
+
         }
     }
 }

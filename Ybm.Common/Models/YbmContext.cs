@@ -19,7 +19,6 @@ namespace Ybm.Common.Models
         public DbSet<AspNetRole> AspNetRoles { get; set; }
         public DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public DbSet<AspNetUser> AspNetUsers { get; set; }
         public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<ErrorType> ErrorTypes { get; set; }
@@ -36,7 +35,6 @@ namespace Ybm.Common.Models
             modelBuilder.Configurations.Add(new AspNetRoleMap());
             modelBuilder.Configurations.Add(new AspNetUserClaimMap());
             modelBuilder.Configurations.Add(new AspNetUserLoginMap());
-            modelBuilder.Configurations.Add(new AspNetUserRoleMap());
             modelBuilder.Configurations.Add(new AspNetUserMap());
             modelBuilder.Configurations.Add(new ErrorLogMap());
             modelBuilder.Configurations.Add(new ErrorTypeMap());

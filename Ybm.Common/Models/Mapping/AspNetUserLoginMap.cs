@@ -28,6 +28,12 @@ namespace Ybm.Common.Models.Mapping
             this.Property(t => t.LoginProvider).HasColumnName("LoginProvider");
             this.Property(t => t.ProviderKey).HasColumnName("ProviderKey");
             this.Property(t => t.UserId).HasColumnName("UserId");
+
+            // Relationships
+            this.HasRequired(t => t.AspNetUser)
+                .WithMany(t => t.AspNetUserLogins)
+                .HasForeignKey(d => d.UserId);
+
         }
     }
 }

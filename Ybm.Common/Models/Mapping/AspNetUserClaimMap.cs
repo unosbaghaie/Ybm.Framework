@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public AspNetUserClaimMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.UserId });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)
@@ -24,6 +24,12 @@ namespace Ybm.Common.Models.Mapping
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.ClaimType).HasColumnName("ClaimType");
             this.Property(t => t.ClaimValue).HasColumnName("ClaimValue");
+
+            // Relationships
+            this.HasRequired(t => t.AspNetUser)
+                .WithMany(t => t.AspNetUserClaims)
+                .HasForeignKey(d => d.UserId);
+
         }
     }
 }

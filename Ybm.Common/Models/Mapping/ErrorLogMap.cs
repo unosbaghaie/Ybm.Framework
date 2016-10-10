@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public ErrorLogMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.IsCustomError, t.Message, t.InnerException, t.StackTrace, t.Source, t.IpAddress, t.CreationDateTime, t.ErrorType_Id });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)

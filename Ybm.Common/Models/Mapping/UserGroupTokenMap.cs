@@ -8,16 +8,10 @@ namespace Ybm.Common.Models.Mapping
         public UserGroupTokenMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.UserGroup_Id, t.Token_Id });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            this.Property(t => t.UserGroup_Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            this.Property(t => t.Token_Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
@@ -25,6 +19,15 @@ namespace Ybm.Common.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.UserGroup_Id).HasColumnName("UserGroup_Id");
             this.Property(t => t.Token_Id).HasColumnName("Token_Id");
+
+            // Relationships
+            this.HasRequired(t => t.Token)
+                .WithMany(t => t.UserGroupTokens)
+                .HasForeignKey(d => d.Token_Id);
+            this.HasRequired(t => t.UserGroup)
+                .WithMany(t => t.UserGroupTokens)
+                .HasForeignKey(d => d.UserGroup_Id);
+
         }
     }
 }

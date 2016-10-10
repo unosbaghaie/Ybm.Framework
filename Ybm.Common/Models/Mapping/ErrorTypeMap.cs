@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public ErrorTypeMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.Name });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Name)

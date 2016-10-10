@@ -15,5 +15,6 @@ namespace Ybm.Common.Models
         public int Priority { get; set; }
         public string SelectorCssClass { get; set; }
         public int PageScope_Id { get; set; }
+        public virtual UserGroup UserGroup { get; set; }
     }
 }

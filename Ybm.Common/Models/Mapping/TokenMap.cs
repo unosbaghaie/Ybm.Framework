@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public TokenMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.Name });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)
@@ -31,6 +31,12 @@ namespace Ybm.Common.Models.Mapping
             this.Property(t => t.AreaName).HasColumnName("AreaName");
             this.Property(t => t.PersianName).HasColumnName("PersianName");
             this.Property(t => t.TokenCategory_Id).HasColumnName("TokenCategory_Id");
+
+            // Relationships
+            this.HasOptional(t => t.TokenCategory)
+                .WithMany(t => t.Tokens)
+                .HasForeignKey(d => d.TokenCategory_Id);
+
         }
     }
 }

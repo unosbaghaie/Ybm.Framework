@@ -8,5 +8,7 @@ namespace Ybm.Common.Models
         public int Id { get; set; }
         public int UserGroup_Id { get; set; }
         public int Token_Id { get; set; }
+        public virtual Token Token { get; set; }
+        public virtual UserGroup UserGroup { get; set; }
     }
 }

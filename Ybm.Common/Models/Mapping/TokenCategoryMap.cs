@@ -8,7 +8,7 @@ namespace Ybm.Common.Models.Mapping
         public TokenCategoryMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.Name, t.PersianName });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)

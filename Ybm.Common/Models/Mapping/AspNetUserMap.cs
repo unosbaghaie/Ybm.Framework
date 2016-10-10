@@ -8,21 +8,15 @@ namespace Ybm.Common.Models.Mapping
         public AspNetUserMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.User_Id, t.EmailConfirmed, t.PhoneNumberConfirmed, t.TwoFactorEnabled, t.LockoutEnabled, t.AccessFailedCount, t.UserName });
+            this.HasKey(t => t.Id);
 
             // Properties
             this.Property(t => t.Id)
                 .IsRequired()
                 .HasMaxLength(128);
 
-            this.Property(t => t.User_Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
             this.Property(t => t.Email)
                 .HasMaxLength(256);
-
-            this.Property(t => t.AccessFailedCount)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             this.Property(t => t.UserName)
                 .IsRequired()
@@ -43,6 +37,12 @@ namespace Ybm.Common.Models.Mapping
             this.Property(t => t.LockoutEnabled).HasColumnName("LockoutEnabled");
             this.Property(t => t.AccessFailedCount).HasColumnName("AccessFailedCount");
             this.Property(t => t.UserName).HasColumnName("UserName");
+
+            // Relationships
+            this.HasRequired(t => t.User)
+                .WithMany(t => t.AspNetUsers)
+                .HasForeignKey(d => d.User_Id);
+
         }
     }
 }

@@ -208,6 +208,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -219,13 +220,12 @@
     <Compile Include="Infrastructure\Filter\CustomHandleErrorAttribute.cs" />
     <Compile Include="Infrastructure\Filter\ValidateAjaxAttribute.cs" />
     <Compile Include="Infrastructure\Helper\FilterDataHelper.cs" />
-    <Compile Include="Infrastructure\Identity\ApplicationDbContext.cs" />
-    <Compile Include="Infrastructure\Identity\ApplicationSignInManager.cs" />
-    <Compile Include="Infrastructure\Identity\ApplicatioUserManager.cs" />
-    <Compile Include="Infrastructure\Identity\CustomUser.cs" />
     <Compile Include="Infrastructure\Mvc\Extension.cs" />
     <Compile Include="Infrastructure\Mvc\MvcController.cs" />
     <Compile Include="Infrastructure\Startup.cs" />
+    <Compile Include="Infrastructure\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Infrastructure\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Infrastructure\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -562,11 +562,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="CKFinder\" />
     <Folder Include="Images\" />
     <Folder Include="Infrastructure\Common\" />
-    <Folder Include="Scripts\CKEditor\" />
-    <Folder Include="Scripts\kendo\" />
     <Folder Include="Scripts\recaptcha\" />
   </ItemGroup>
   <ItemGroup>
