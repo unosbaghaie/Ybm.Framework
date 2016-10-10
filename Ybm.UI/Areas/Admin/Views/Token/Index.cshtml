@@ -1,0 +1,85 @@
+﻿@model List<Ybm.UI.Areas.Admin.Requirements.ViewModels.DisplayTokenViewModel>
+@{
+    ViewBag.Title = "Token create view";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Kendo.Mvc.UI;
+@section Scripts
+{
+    <script src="~/app/areas/Admin/Token/TokenIndexController.js"></script>
+
+}
+<style>
+    .checkbox label, .radio label, label {
+        font-size: 12px;
+        line-height: 1.45;
+        color: #58B3F0;
+        font-weight: 300;
+    }
+</style>
+<div class="panel" data-widget='{"draggable": "false"}' ng-controller="TokenIndexController">
+    <div class="panel-heading">
+        <h2>Creat Token </h2>
+        <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+    </div>
+    <div class="panel-body main">
+        <input type="hidden" id="_UserGroupId" />
+        @(Html.Kendo().DropDownListFor(m => m.FirstOrDefault().UserGroupId)
+.DataTextField("Name")
+.DataValueField("Id")
+.DataSource(source =>
+{
+    source.Read(read =>
+    {
+        read.Action("ReadUserGroupForDropDown", "Token");
+    });
+}).Events(q => q.Select("UserGroupOnSelect"))
+        )
+
+        <button type="button" id="checkedAll" onclick="checkedAll()"> انتخاب همه </button>
+        <button type="button" id="unCheckedAll" onclick="unCheckedAll()" style="display:none"> عدم انتخاب همه </button>
+
+        <div class="rtl k-rtl responsive-main" ng-controller="TokenIndexController">
+
+
+
+            @foreach (var modelItem in Model)
+            {
+                string temp = "";
+                <div class="panel panel-info ">
+                    <div class="panel-heading">
+                        گروه @modelItem.AreaName;
+                        <div class="btn btn-default" onclick="checkTheGroup(this)">انتخاب همه </div>
+                    </div>
+                    <div class="panel-body">
+
+                        @foreach (var item in modelItem.SelectViewModel)
+                        {
+                            if (item.CategoryName != temp)
+                            {
+                                <div class="col-md-12"><hr /></div>
+                                temp = item.CategoryName;
+                                <div class="row clear-both">
+                                    @item.CategoryTitle
+
+                                </div>
+                            }
+                            <div class="checkbox col-md-3">
+                                <label>
+                                    <input class="tokens" name="tokens" id="@item.Id" type="checkbox" checked="@item.Checked"> @item.Name
+                                </label>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+            <div class="row clear-both">
+                <button type="button" onclick="save()"> ذخیره </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

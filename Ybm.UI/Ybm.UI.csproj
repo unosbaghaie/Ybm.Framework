@@ -208,6 +208,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
+    <Compile Include="Areas\Admin\Requirements\ViewModels\DisplayTokenViewModel.cs" />
+    <Compile Include="Areas\Admin\Requirements\ViewModels\TokenSelectViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +235,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\areas\Admin\Token\TokenIndexController.js" />
     <Content Include="app\commonDirective\editInPlace.js" />
     <Content Include="app\commonDirective\onfinishrender.js" />
     <Content Include="app\js\app.js" />
@@ -508,6 +513,10 @@
     <Content Include="Content\kendo\2016.2.504\kendo.silver.mobile.min.css.map" />
     <Content Include="Content\kendo\2016.2.504\kendo.uniform.min.css.map" />
     <Content Include="Content\kendo\2016.2.504\kendo.uniform.mobile.min.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Token\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -562,6 +571,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Images\" />
     <Folder Include="Infrastructure\Common\" />
     <Folder Include="Scripts\recaptcha\" />
