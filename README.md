@@ -66,3 +66,23 @@ you can override some methods in business layer to handle Create, Upate and dele
             base.OnRecordDeleted(sender, e);
         }
         
+
+ClaimBasedAuthorzation on controllers:
+which gather all Claims information and store in Tokens table to Authorize
+a page to manage userGroups' Tokens is provided
+
+    [TokenCategory(CategoryTitle = "Home Page", CategoryName = "HomePage")]
+    public class HomeController : Controller
+    {
+        [ClaimBasedAuthorzation(TokenName = "View Home Page", ClaimType = "UserRight")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [ClaimBasedAuthorzation(TokenName = "Do Something", ClaimType = "UserRight")]
+        public ActionResult DoSomething()
+        {
+            return View();
+        }
+    }
