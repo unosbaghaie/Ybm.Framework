@@ -68,7 +68,8 @@ you can override some methods in business layer to handle Create, Upate and dele
         
 
 ClaimBasedAuthorzation on controllers:
-which gather all Claims information and store in Tokens table to Authorize
+which gather all Claims information and store in Tokens table to Authorize.
+
 a page to manage userGroups' Tokens is provided
 
     [TokenCategory(CategoryTitle = "Home Page", CategoryName = "HomePage")]
