@@ -10,6 +10,9 @@ namespace Ybm.Framework.Interface
     public interface IFilterable
     {
         
+
+
+
          List<CustomFilterDescriptor> FilterData { get; set; }
         ActionResult FilterThePage(Dictionary<string, string> selectedFilters);
 
