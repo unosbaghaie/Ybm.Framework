@@ -114,6 +114,7 @@
     <Compile Include="Eventing\SubscribeToAttribute.cs" />
     <Compile Include="ExpressionHelper\ExpressionBuilder.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="Extension\ExpressionExtensions.cs" />
     <Compile Include="Extension\IQueryableExtension.cs" />
     <Compile Include="Identity2\ApplicationDbContext.cs" />
     <Compile Include="Identity2\ApplicationSignInManager.cs" />
