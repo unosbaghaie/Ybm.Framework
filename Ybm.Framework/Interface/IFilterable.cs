@@ -10,7 +10,7 @@ namespace Ybm.Framework.Interface
     public interface IFilterable
     {
         
-        //asdasdas
+        //asdasdasasd
 
 
          List<CustomFilterDescriptor> FilterData { get; set; }
