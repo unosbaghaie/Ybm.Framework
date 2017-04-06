@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@section Scripts
+{
+    <script src="~/app/areas/Admin/ErrorLog/ErrorLogIndexController.js"></script>
+}
+@using Kendo.Mvc.UI;
+<div class="panel panel-default" data-widget='{"draggable": "false"}'>
+    <div class="panel-heading">
+        <h2>Skill Index</h2>
+        <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+    </div>
+    <div class="panel-body main">
+        <div dir="rtl" ng-controller="ErrorLogIndexController">
+            @(Html.Kendo().Grid<Ybm.UI.Areas.Admin.Requirements.ViewModels.ErrorLogViewModel>()
+                      .Name("ErrorLogGrid")
+                      .Columns(columns =>
+                      {
+                          columns.Bound(p => p.Id);
+                          columns.Bound(p => p.Message);
+                          columns.Command(command =>
+                          {
+                              command.Custom("ویرایش").Click("Update");
+                              command.Custom("حذف").Click("Delete");
+                          });
+
+                      })
+                      .ToolBar(toolbar =>
+                      {
+                          toolbar.Custom().Text(" جدید ").HtmlAttributes(new { id = "CreateNew", onclick = "CreateNew()", Href = "#" });
+                      })
+
+                      .Pageable()
+        .Scrollable(q => q.Enabled(false))
+    .DataSource(dataSource => dataSource
+        .Ajax()
+         .Model(model =>
+         {
+             model.Id(p => p.Id);
+
+         })
+        .Read(read => read.Action("Read", "ErrorLog", "Admin"))
+    )
+            )
+        </div>
+    </div>
+</div>
+

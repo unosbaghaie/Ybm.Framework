@@ -209,6 +209,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorLogController.cs" />
     <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\DisplayTokenViewModel.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\TokenSelectViewModel.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Infrastructure\Mvc\MvcController.cs" />
     <Compile Include="Infrastructure\Startup.cs" />
     <Compile Include="Infrastructure\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Areas\Admin\Requirements\ViewModels\ErrorLogViewModel.cs" />
     <Compile Include="Infrastructure\ViewModels\LoginViewModel.cs" />
     <Compile Include="Infrastructure\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -235,6 +237,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\areas\Admin\ErrorLog\ErrorLogIndexController.js" />
     <Content Include="app\areas\Admin\Token\TokenIndexController.js" />
     <Content Include="app\commonDirective\editInPlace.js" />
     <Content Include="app\commonDirective\onfinishrender.js" />
@@ -517,6 +520,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Token\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ErrorLog\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
