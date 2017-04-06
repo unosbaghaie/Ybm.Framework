@@ -1,0 +1,18 @@
+﻿add this to app config 
+
+<connectionStrings>
+        <add name="YbmContext" connectionString="Data Source=.;Initial Catalog=Ybm;User ID=sa;Password=AAaa123"
+            providerName="System.Data.SqlClient" />
+        </connectionStrings>
+
+
+
+make common project as startup 
+
+
+run these in  package manager console : 
+
+
+enable-migrations -force
+add-migration InitialCreate
+update-database -Verbose
