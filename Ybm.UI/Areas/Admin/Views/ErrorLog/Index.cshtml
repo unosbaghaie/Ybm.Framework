@@ -10,11 +10,35 @@
     <script src="~/app/areas/Admin/ErrorLog/ErrorLogIndexController.js"></script>
 }
 @using Kendo.Mvc.UI;
+@using Cms.UI;
+
 <div class="panel panel-default" data-widget='{"draggable": "false"}'>
     <div class="panel-heading">
         <h2>Skill Index</h2>
         <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
     </div>
+
+
+
+
+    <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
+        <div class="panel-heading">
+            <h2> فیلتر </h2>
+            <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+        </div>
+        <div class="panel-body">
+            <div class="scroll-content">
+                @Html.FilterFor((List<Ybm.Framework.CustomFilterDescriptor>)ViewBag.filterControlsModel, (int?)ViewBag.User_Id)
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <div class="panel-body main">
         <div dir="rtl" ng-controller="ErrorLogIndexController">
             @(Html.Kendo().Grid<Ybm.UI.Areas.Admin.Requirements.ViewModels.ErrorLogViewModel>()
