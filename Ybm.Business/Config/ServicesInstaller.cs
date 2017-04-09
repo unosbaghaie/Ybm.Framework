@@ -22,7 +22,6 @@ namespace Ybm.Framework
             
 
             container.Register(Component.For<IUserBusiness>().ImplementedBy<UserBusiness>().LifestylePerWebRequest());
-            container.Register(Component.For<IUserBusiness>().ImplementedBy<UserBusiness>().LifestylePerWebRequest());
             container.Register(Component.For<IPageBusiness>().ImplementedBy<PageBusiness>().LifestylePerWebRequest());
             container.Register(Component.For<ITokenCategoryBusiness>().ImplementedBy<TokenCategoryBusiness>().LifestylePerWebRequest());
             container.Register(Component.For<IUserGroupTokenBusiness>().ImplementedBy<UserGroupTokenBusiness>().LifestylePerWebRequest());

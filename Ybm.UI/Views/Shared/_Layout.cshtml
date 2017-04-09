@@ -1,44 +1,561 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="coming-soon">
 <head>
+    <title>Sample Kendo UI AngularJS Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
 
+    @*<script src="@Url.Content("~/Scripts/kendo/2016.2.504/jquery.min.js")"></script>*@
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    <script src="~/app/lib/uiTemplate/js/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/app/lib/uiTemplate/fonts/IranSans/style.css" rel="stylesheet" />
+
+    <link href="~/app/lib/uiTemplate/css/select2.css" rel="stylesheet" />
+    <link href="~/app/lib/uiTemplate/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/app/lib/uiTemplate/css/prettify.css" rel="stylesheet" />
+    <link href="~/app/lib/uiTemplate/css/jquery.dropdown.css" rel="stylesheet" />
+    <link href="~/app/lib/uiTemplate/css/skylo.css" rel="stylesheet" />
+    <link href="~/app/lib/uiTemplate/css/material-icons.css" rel="stylesheet" />
+    <link href="~/app/lib/uiTemplate/css/pnotify.css" rel="stylesheet" />
+
+    <link href="~/app/lib/uiTemplate/css/styles.css" rel="stylesheet" />
+
+    <style>
+        [ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+    </style>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+<body class="horizontal-nav animated-content infobar-overlay" ng-app="app">
+    <div ng-controller="LayoutController" style="min-height:100%;" class="ng-cloak">
+
+
+        <div id="wrapper">
+
+            <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
+                <!-- <div id="page-progress-loader" class="show"></div> -->
+
+                <div class="logo-area">
+                    <a class="navbar-brand navbar-brand-primary" href="index.html">
+                        <img class="show-on-collapse img-logo-white" alt="Paper" src="assets/img/logo-icon-white.png">
+                        <img class="show-on-collapse img-logo-dark" alt="Paper" src="assets/img/logo-icon-dark.png">
+                        <img class="img-white" alt="Paper" src="assets/img/logo-white.png">
+                        <img class="img-dark" alt="Paper" src="assets/img/logo-dark.png">
+                    </a>
+
+
+
+
+                </div><!-- logo-area -->
+
+                <ul class="nav navbar-nav toolbar pull-right">
+
+
+                    <li class="toolbar-icon-bg hidden-xs" id="trigger-fullscreen">
+                        <a href="#" class="toggle-fullscreen">
+                            <span class="icon-bg">
+                                <i class="material-icons">fullscreen</i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="dropdown toolbar-icon-bg">
+                        <a href="#" class="hasnotifications dropdown-toggle" data-toggle="dropdown"><span class="icon-bg"><i class="material-icons">notifications</i></span><span class="badge badge-info"></span></a>
+                        <div class="dropdown-menu animated notifications">
+                            <div class="topnav-dropdown-header">
+                                <span style="display:block" class="rtl"> {{AlertCount}} پیام سیستمی خوانده   نشده </span>
+                            </div>
+                            <div class="scroll-pane has-scrollbar">
+                                <ul class="media-list scroll-content" tabindex="0" style="right: -17px;">
+                                    <li class="media notification-success" ng-repeat="item in Alerts" ng-click="showAlert($event)" data-id="{{item.Id}}">
+                                        <a href="#">
+                                            <div class="media-left">
+                                                <span class="notification-icon"><i class="material-icons">lock</i></span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="notification-heading">{{item.Subject}}  ‒{{item.Body}}</h4>
+                                                <span class="notification-time">{{item.TimeSince}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="scroll-track"><div class="scroll-thumb" style="height: 218px; transform: translate(0px, 0px);"></div></div>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                @Html.ActionLink("مشاهده همه ی پیام های سیستمی", "Alert", "Message");
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown toolbar-icon-bg hidden-xs">
+                        <a href="#" class="hasnotifications dropdown-toggle" data-toggle="dropdown"><span class="icon-bg"><i class="material-icons">mail</i></span><span class="badge badge-info"></span></a>
+                        <div class="dropdown-menu animated notifications">
+                            <div class="topnav-dropdown-header">
+                                <span style="display:block" class="rtl"> {{MessageCount}} پیام خوانده   نشده </span>
+
+                            </div>
+                            <div class="scroll-pane has-scrollbar">
+                                <ul class="media-list scroll-content" tabindex="0" style="right: -17px;">
+                                    <li class="media notification-message" ng-repeat="item in UnreadMessages" ng-click="showMessage($event)" data-id="{{item.Id}}">
+                                        <a href="#">
+                                            <div class="media-left">
+                                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="notification-heading"><strong>{{item.Subject}}</strong> <span class="text-gray">‒{{item.Body}}.</span></h4>
+                                                <span class="notification-time">{{item.TimeSince}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="scroll-track"><div class="scroll-thumb" style="height: 124px; transform: translate(0px, 0px);"></div></div>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                @Html.ActionLink("مشاهده همه ی پیام ها", "Index", "Message");
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="toolbar-icon-bg" id="trigger-infobar">
+                        <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                            <span class="icon-bg">
+                                <i class="material-icons">more_vert</i>
+                            </span>
+                        </a>
+                    </li>
+
                 </ul>
-                @Html.Partial("_LoginPartial")
+
+            </header>            <nav class="navbar navbar-default" role="navigation" id="headernav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#horizontal-navbar">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="horizontal-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown ng-cloak" ng-repeat="item in MenuItems" onfinishrender="test()" ng-cloak>
+                            <a href="#" class="dropdown-toggle"><i class="{{item.SelectorCssClass}}"></i> <span>{{item.PageName}}{{item.Parent_Id}} <i class="ml-xs fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown-menu subMenuParent">
+                                <li ng-repeat="sub in subMenu" ng-if="item.Id ==sub.ParentId "><a href="{{sub.PageHref}}">{{sub.Name}} </a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="static-content-wrapper" id="mainContentC">
+                <div class="static-content">
+                    <div class="page-content">
+                        <ol class="breadcrumb mb-md">
+
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">Layout</a></li>
+                            <li class="active"><a href="layout-horizontal-large.html">Horizontal Nav with Large Icons</a></li>
+                        </ol>
+                        <div class="container-fluid">
+
+                            <div data-widget-group="group1">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @RenderBody()
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .container-fluid -->
+                    </div> <!-- #page-content -->
+                </div>
+                <footer role="contentinfo" class="animated " style="display:none">
+                    <div class="clearfix">
+                        <ul class="list-unstyled list-inline pull-left">
+                            <li><h6 style="margin: 0;">&copy; 2016 KaijuThemes</h6></li>
+                        </ul>
+                    </div>
+                </footer>
+            </div>
+
+
+        </div>
+        <div class="infobar-wrapper scroll-pane">
+            <div class="infobar scroll-content">
+
+                <ul class="nav nav-tabs material-nav-tabs stretch-tabs icon-tabs">
+                    <li>
+                        <a href="#tab-7-1" data-toggle="tab">
+                            <i class="material-icons">settings</i>
+                        </a>
+                    </li>
+                    <li class="active ">
+                        <a href="#tab-7-2" data-toggle="tab">
+                            <span class="step size-64">
+                                <i class="material-icons">textsms</i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane" id="tab-7-1">
+                        <table class="table table-settings">
+                            <tbdody>
+                                <tr>
+                                    <td>
+                                        <h5>Alerts</h5>
+                                        <p>Sets alerts to get notified when changes occur to get new alerming items</p>
+                                    </td>
+                                    <td><span class="togglebutton toggle-info"><label><input type="checkbox"> </label></span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Notifications</h5>
+                                        <p>You will receive notification email for any notifications if you set notification</p>
+                                    </td>
+                                    <td><span class="togglebutton toggle-primary"><label><input type="checkbox" class="toggle" checked=""> </label></span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Messages</h5>
+                                        <p>You will receive notification on email after setting messages notifications</p>
+                                    </td>
+                                    <td>
+                                        <span class="togglebutton toggle-danger"><label><input type="checkbox"> </label></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Warnings</h5>
+                                        <p>You will get warnning only some specific setttings or alert system</p>
+                                    </td>
+                                    <td>
+                                        <span class="togglebutton toggle-warning"><label><input type="checkbox" checked=""> </label></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Sidebar</h5>
+                                        <p>You can hide/show use with sidebar collapsw settings</p>
+                                    </td>
+                                    <td><span class="togglebutton toggle-success"><label><input type="checkbox" checked=""> </label></span></td>
+                                </tr>
+                            </tbdody>
+                        </table>
+                    </div>
+                    <div class="tab-pane active" id="tab-7-2">
+                        <div class="widget">
+                            <div class="widget-heading">Recent Activities</div>
+                            <div class="widget-body">
+                                <ul class="timeline">
+                                    <li class="timeline-purple">
+                                        <div class="timeline-icon"><i class="material-icons">add</i></div>
+                                        <div class="timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="author">Jana Pena is now Follwing you</span>
+                                                <span class="date">2 min ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-primary">
+                                        <div class="timeline-icon"><i class="material-icons">textsms</i></div>
+                                        <div class="timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="author">Percy liaye Like your picture</span>
+                                                <span class="date">6 min ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-green">
+                                        <div class="timeline-icon"><i class="material-icons">done</i></div>
+                                        <div class="timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="author">Leon miles make your presentation for new project</span>
+                                                <span class="date">2 hours ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-danger">
+                                        <div class="timeline-icon"><i class="material-icons">favorite</i></div>
+                                        <div class="timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="author">Lake wile like your comment</span>
+                                                <span class="date">5 hours ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-sky">
+                                        <div class="timeline-icon"><i class="material-icons">attach_money</i></div>
+                                        <div class="timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="author">The Mountain Ambience paid your payment</span>
+                                                <span class="date">9 hours ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-heading">Contacts</div>
+                            <div class="widget-body">
+                                <ul class="media-list contacts">
+                                    <li class="media notification-message">
+                                        <div class="media-left">
+                                            <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-gray">Jon Owens</span>
+                                            <span class="contact-status text-success">Online</span>
+                                        </div>
+                                    </li>
+                                    <li class="media notification-message">
+                                        <div class="media-left">
+                                            <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-gray">Nina Huges</span>
+                                            <span class="contact-status text-muted">Offline</span>
+                                        </div>
+                                    </li>
+                                    <li class="media notification-message">
+                                        <div class="media-left">
+                                            <img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-gray">Austin Lee</span>
+                                            <span class="contact-status text-danger">Busy</span>
+                                        </div>
+                                    </li>
+                                    <li class="media notification-message">
+                                        <div class="media-left">
+                                            <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-gray">Grady Hines</span>
+                                            <span class="contact-status text-warning">Away</span>
+                                        </div>
+                                    </li>
+                                    <li class="media notification-message">
+                                        <div class="media-left">
+                                            <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-gray">Adrian Barton</span>
+                                            <span class="contact-status text-success">Online</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+
+        <!-- Das FAB -->
+        <button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="Click for Settings"><i class="material-icons">settings</i></button>
+        <!-- Switcher -->
+        <div class="demo-options">
+            <div class="demo-body">
+                <div class="tabular">
+                    <div class="tabular-row">
+                        <div class="tabular-cell">Fixed Header</div>
+                        <div class="tabular-cell demo-switches text-right">
+                            <div class="togglebutton checkbox-primary">
+                                <label>
+                                    <input type="checkbox" name="demo-fixedheader" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabular-row">
+                        <div class="tabular-cell">Boxed Layout</div>
+                        <div class="tabular-cell demo-switches text-right">
+                            <div class="togglebutton toggle-primary">
+                                <label>
+                                    <input type="checkbox" name="demo-layoutboxed">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabular-row">
+                        <div class="tabular-cell">Collapse Leftbar</div>
+                        <div class="tabular-cell demo-switches text-right">
+                            <div class="togglebutton toggle-primary">
+                                <label>
+                                    <input type="checkbox" name="demo-collapseleftbar">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-body">
+                <div class="option-title">Brand</div>
+                <ul id="demo-header-color" class="demo-color-list">
+                    <li><span data-addclass="navbar-brand-default" class="brand-switcher demo-default"></span></li>
+                    <li><span data-addclass="navbar-brand-primary" class="brand-switcher demo-primary"></span></li>
+                    <li><span data-addclass="navbar-brand-success" class="brand-switcher demo-success"></span></li>
+                    <li><span data-addclass="navbar-brand-danger" class="brand-switcher demo-danger"></span></li>
+                    <li><span data-addclass="navbar-brand-warning" class="brand-switcher demo-warning"></span></li>
+                    <li><span data-addclass="navbar-brand-info" class="brand-switcher demo-info"></span></li>
+                    <li><span data-addclass="navbar-brand-inverse" class="brand-switcher demo-inverse"></span></li>
+                </ul>
+            </div>
+            <div class="demo-body">
+                <div class="option-title">Topnav</div>
+                <ul id="demo-header-color" class="demo-color-list">
+                    <li><span data-addclass="navbar-cyan" class="topnav-switcher demo-cyan"></span></li>
+                    <li><span data-addclass="navbar-light-blue" class="topnav-switcher demo-light-blue"></span></li>
+                    <li><span data-addclass="navbar-blue" class="topnav-switcher demo-blue"></span></li>
+                    <li><span data-addclass="navbar-indigo" class="topnav-switcher demo-indigo"></span></li>
+                    <li><span data-addclass="navbar-deep-purple" class="topnav-switcher demo-deep-purple"></span></li>
+                    <li><span data-addclass="navbar-purple" class="topnav-switcher demo-purple"></span></li>
+                    <li><span data-addclass="navbar-pink" class="topnav-switcher demo-pink"></span></li>
+                    <li><span data-addclass="navbar-red" class="topnav-switcher demo-red"></span></li>
+                    <li><span data-addclass="navbar-teal" class="topnav-switcher demo-teal"></span></li>
+                    <li><span data-addclass="navbar-green" class="topnav-switcher demo-green"></span></li>
+                    <li><span data-addclass="navbar-light-green" class="topnav-switcher demo-light-green"></span></li>
+                    <li><span data-addclass="navbar-orange" class="topnav-switcher demo-orange"></span></li>
+                    <li><span data-addclass="navbar-deep-orange" class="topnav-switcher demo-deep-orange"></span></li>
+
+                    <li><span data-addclass="navbar-bluegray" class="topnav-switcher demo-bluegray"></span></li>
+
+
+                    <li><span data-addclass="navbar-gray" class="topnav-switcher demo-gray"></span></li>
+
+                    <li><span data-addclass="navbar-default" class="topnav-switcher demo-default"></span></li>
+                    <li><span data-addclass="navbar-bleachedcedar" class="topnav-switcher demo-bleachedcedar"></span></li>
+                    <li><span data-addclass="navbar-brown" class="topnav-switcher demo-brown"></span></li>
+                </ul>
+            </div>
+            <div class="demo-body">
+                <div class="option-title">Sidebar</div>
+                <ul id="demo-sidebar-color" class="demo-color-list">
+                    <li><span data-addclass="sidebar-cyan" class="leftbar-switcher demo-cyan"></span></li>
+                    <li><span data-addclass="sidebar-light-blue" class="leftbar-switcher demo-light-blue"></span></li>
+                    <li><span data-addclass="sidebar-blue" class="leftbar-switcher demo-blue"></span></li>
+                    <li><span data-addclass="sidebar-indigo" class="leftbar-switcher demo-indigo"></span></li>
+                    <li><span data-addclass="sidebar-deep-purple" class="leftbar-switcher demo-deep-purple"></span></li>
+                    <li><span data-addclass="sidebar-purple" class="leftbar-switcher demo-purple"></span></li>
+                    <li><span data-addclass="sidebar-pink" class="leftbar-switcher demo-pink"></span></li>
+                    <li><span data-addclass="sidebar-red" class="leftbar-switcher demo-red"></span></li>
+                    <li><span data-addclass="sidebar-teal" class="leftbar-switcher demo-teal"></span></li>
+                    <li><span data-addclass="sidebar-green" class="leftbar-switcher demo-green"></span></li>
+                    <li><span data-addclass="sidebar-light-green" class="leftbar-switcher demo-light-green"></span></li>
+                    <li><span data-addclass="sidebar-orange" class="leftbar-switcher demo-orange"></span></li>
+                    <li><span data-addclass="sidebar-deep-orange" class="leftbar-switcher demo-deep-orange"></span></li>
+
+                    <li><span data-addclass="sidebar-bluegray" class="leftbar-switcher demo-bluegray"></span></li>
+
+
+                    <li><span data-addclass="sidebar-gray" class="leftbar-switcher demo-gray"></span></li>
+
+                    <li><span data-addclass="sidebar-default" class="leftbar-switcher demo-default"></span></li>
+                    <li><span data-addclass="sidebar-bleachedcedar" class="leftbar-switcher demo-bleachedcedar"></span></li>
+                    <li><span data-addclass="sidebar-brown" class="leftbar-switcher demo-brown"></span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- /Switcher -->
+    <!-- Load site level scripts -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> -->
+    <script src="~/app/lib/uiTemplate/js/jqueryui-1.10.3.min.js"></script> 							<!-- Load jQueryUI -->
+    <script src="~/app/lib/uiTemplate/js/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
+    <script src="~/app/lib/uiTemplate/js/enquire.min.js"></script> 									<!-- Load Enquire -->
+    <script src="~/app/lib/uiTemplate/js/velocity.min.js"></script>					<!-- Load Velocity for Animated Content -->
+    <script src="~/app/lib/uiTemplate/js/velocity.ui.min.js"></script>
+    <script src="~/app/lib/uiTemplate/js/skylo.js"></script> 		<!-- Skylo -->
+    <script src="~/app/lib/uiTemplate/js/wijets.js"></script>     						<!-- Wijet -->
+    <script src="~/app/lib/uiTemplate/js/jquery.sparklines.min.js"></script> 			 <!-- Sparkline -->
+    <script src="~/app/lib/uiTemplate/js/prettify.js"></script> 				<!-- Code Prettifier  -->
+    <script src="~/app/lib/uiTemplate/js/bootstrap-tabdrop.js"></script>  <!-- Bootstrap Tabdrop -->
+    <script src="~/app/lib/uiTemplate/js/jquery.nanoscroller.min.js"></script> <!-- nano scroller -->
+    <script src="~/app/lib/uiTemplate/js/jquery.dropdown.js"></script> <!-- Fancy Dropdowns -->
+    <script src="~/app/lib/uiTemplate/js/material.min.js"></script> <!-- Bootstrap Material -->
+    <script src="~/app/lib/uiTemplate/js/ripples.min.js"></script> <!-- Bootstrap Material -->
+    <script src="~/app/lib/uiTemplate/js/application.js"></script>
+    <script src="~/app/lib/uiTemplate/js/demo.js"></script>
+    <script src="~/app/lib/uiTemplate/js/demo-switcher.js"></script>
+    <script src="~/app/lib/uiTemplate/js/select2.min.js"></script>
+    <!-- End loading site level scripts -->
+    <script type="text/javascript">
+        $(function () {
+            $('#horizontal-navbar ul.nav.navbar-nav li.dropdown').hover(function () {
+                $(this).addClass('open');
+            }, function () {
+                $(this).removeClass('open');
+            })
+        })
+    </script>
+    <!--     <script src="assets/plugins/smartmenus/jquery.smartmenus.js"></script>
+        <script src="assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js"></script>
+     -->
+    <!-- Load page level scripts-->
+    <!-- End loading page level scripts-->
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/angular-route.js")"></script>
+    <script src="@Url.Content("~/app/js/app.js")"></script>
+    <script src="~/app/js/directives/dynamic.js"></script>
+    <script src="~/app/commonDirective/editInPlace.js"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.aspnetmvc.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.editor.min.js")"></script>
+
+    <script src="~/app/lib/JalaliDate/JalaliDate.js"></script>
+    <script src="~/app/lib/JalaliDate/kendo.core.js"></script>
+    <script src="~/app/lib/JalaliDate/kendo.calendar.js"></script>
+    <script src="~/app/lib/JalaliDate/kendo.datepicker.js"></script>
+    <script src="~/app/lib/JalaliDate/kendo.popup.js"></script>
+    <script src="~/app/lib/JalaliDate/fa-IR.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/app/js/CustomGridActions.js"></script>
+    <script src="~/app/js/serviceBase.js"></script>
+
+    @*<script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="~/app/js/serviceBaseAngular.js"></script>
+    <script type="text/javascript">
+
+        function getCurentControllerUrl(action) {
+            return '@Url.Action("ac", Request.RequestContext.RouteData.Values["controller"])'.replace("ac", action);
+        }
+
+    </script>
+    <script src="~/app/areas/Shared/LayoutController.js"></script>
+    <script src="~/app/commonDirective/onfinishrender.js"></script>
+    <script src="~/app/lib/uiTemplate/js/pnotify.min.js"></script>
+    <script src="~/app/lib/uiTemplate/js/fileinput.min.js"></script>
+
+    <script type="text/javascript">
+        //document.getElementById('mainContentC').style.height = document.body.clientHeight - 170 + "px";
+        $('footer').css({ 'display': 'block' });
+
+    </script>
 </body>
+
+
+
+@RenderSection("Scripts", false/*required*/)
+
+
 </html>
