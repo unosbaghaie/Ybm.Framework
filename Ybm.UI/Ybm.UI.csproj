@@ -245,6 +245,7 @@
   <ItemGroup>
     <Content Include="app\areas\Admin\ErrorLog\ErrorLogIndexController.js" />
     <Content Include="app\areas\Admin\Token\TokenIndexController.js" />
+    <Content Include="app\areas\Shared\LayoutController.js" />
     <Content Include="app\commonDirective\editInPlace.js" />
     <Content Include="app\commonDirective\onfinishrender.js" />
     <Content Include="app\js\app.js" />

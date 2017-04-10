@@ -76,7 +76,9 @@ namespace Ybm.UI.Areas.Admin.Controllers
         //[ClaimBasedAuthorzation(TokenName = "پر کردن گیرید شکایات کاربر", ClaimType = "UserRight")]
         public virtual ActionResult Read([DataSourceRequest] DataSourceRequest request, byte? status = null)
         {
-            Expression<Func<ErrorLog, bool>> basePredicate = q => q.Id == 10;
+
+            var lastMonth = DateTime.Now.AddMonths(-1);
+            Expression<Func<ErrorLog, bool>> basePredicate = q => q.CreationDateTime > lastMonth;
 
 
             #region [IFilterable Predicate]

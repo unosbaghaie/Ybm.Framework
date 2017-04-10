@@ -12,36 +12,38 @@
 @using Kendo.Mvc.UI;
 @using Cms.UI;
 
-<div class="panel panel-default"  ng-controller="ErrorLogIndexController" data-widget='{"draggable": "false"}'>
-    <div class="panel-heading">
-        <h2>Skill Index</h2>
-        <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
-    </div>
-
-
-
-
+<div ng-controller="ErrorLogIndexController">
     <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
         <div class="panel-heading">
             <h2> فیلتر </h2>
             <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="display: none;">
             <div class="scroll-content">
-                @*@Html.FilterFor((List<Ybm.Framework.CustomFilterDescriptor>)ViewBag.filterControlsModel, (int?)ViewBag.User_Id)*@
+                @Html.FilterFor((List<Ybm.Framework.CustomFilterDescriptor>)ViewBag.filterControlsModel, (int?)ViewBag.User_Id)
             </div>
         </div>
     </div>
 
 
 
+    <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
+        <div class="panel-heading">
+            <h2>Skill Index</h2>
+            <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+        </div>
 
 
 
 
-    <div class="panel-body main">
-        <div dir="rtl">
-            @(Html.Kendo().Grid<Ybm.UI.Areas.Admin.Requirements.ViewModels.ErrorLogViewModel>()
+
+
+
+
+
+        <div class="panel-body main">
+            <div dir="rtl">
+                @(Html.Kendo().Grid<Ybm.UI.Areas.Admin.Requirements.ViewModels.ErrorLogViewModel>()
                       .Name("ErrorLogGrid")
                       .Columns(columns =>
                       {
@@ -70,8 +72,12 @@
          })
         .Read(read => read.Action("Read", "ErrorLog", "Admin"))
     )
-            )
+                )
+            </div>
         </div>
     </div>
-</div>
 
+
+
+
+</div>
