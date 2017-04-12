@@ -26,17 +26,13 @@ namespace Ybm.UI.Areas.Admin.Controllers
         // GET: Admin/ErrorLog
         public ActionResult Index()
         {
-
             #region [IFilterable View Data]
             ViewBag.filterControlsModel = FilterData;
             //ViewBag.User_Id = User_Id;
             #endregion
 
-
             return View();
         }
-
-
 
 
         #region [IFilterable Functions]
@@ -53,8 +49,6 @@ namespace Ybm.UI.Areas.Admin.Controllers
                     );
 
                 return decriptors;
-
-
             }
             set { }
         }
@@ -72,14 +66,11 @@ namespace Ybm.UI.Areas.Admin.Controllers
         #endregion
 
 
-
         //[ClaimBasedAuthorzation(TokenName = "پر کردن گیرید شکایات کاربر", ClaimType = "UserRight")]
         public virtual ActionResult Read([DataSourceRequest] DataSourceRequest request, byte? status = null)
         {
-
             var lastMonth = DateTime.Now.AddMonths(-1);
             Expression<Func<ErrorLog, bool>> basePredicate = q => q.CreationDateTime > lastMonth;
-
 
             #region [IFilterable Predicate]
             if (TempData["predicate"] != null)
@@ -96,7 +87,5 @@ namespace Ybm.UI.Areas.Admin.Controllers
             var count = errorLogBiz.Count(basePredicate);
             return Json(list.ToList().Select(q => q.GetViewModel()).ToDataSourceResult(request, count), JsonRequestBehavior.AllowGet);
         }
-
-
     }
 }
