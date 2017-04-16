@@ -216,6 +216,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorLogController.cs" />
     <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserGroupController.cs" />
     <Compile Include="Areas\Admin\Requirements\ErrorLogMapper.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\DisplayTokenViewModel.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\TokenSelectViewModel.cs" />
@@ -1543,6 +1544,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\UserGroup\" />
     <Folder Include="Images\" />
     <Folder Include="Infrastructure\Common\" />
     <Folder Include="Scripts\recaptcha\" />

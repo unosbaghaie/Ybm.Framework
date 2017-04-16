@@ -197,6 +197,8 @@ namespace Ybm.Framework.ExpressionHelper
 
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> a, Expression<Func<T, bool>> b)
         {
+            if (a == null)
+                return b;
 
             ParameterExpression p = a.Parameters[0];
 
