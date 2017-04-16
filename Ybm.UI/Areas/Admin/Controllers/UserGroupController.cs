@@ -10,6 +10,7 @@ using Ybm.Business;
 using Ybm.Common.Models;
 using Ybm.Framework;
 using Ybm.Framework.ExpressionHelper;
+using Ybm.UI.Areas.Admin.Requirements;
 
 namespace Ybm.UI.Areas.Admin.Controllers
 {
@@ -66,7 +67,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
         public virtual ActionResult Read([DataSourceRequest] DataSourceRequest request, byte? status = null)
         {
             var lastMonth = DateTime.Now.AddMonths(-1);
-            Expression<Func<UserGroup, bool>> basePredicate = q => q.Id > 0;
+            Expression<Func<UserGroup, bool>> basePredicate = null;
 
             #region [IFilterable Predicate]
             if (TempData["predicate"] != null)
