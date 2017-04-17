@@ -223,6 +223,7 @@
     <Compile Include="Areas\Admin\Requirements\Mappers\UserGroupMapper.cs" />
     <Compile Include="Areas\Admin\Requirements\Mappers\ErrorLogMapper.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\DisplayTokenViewModel.cs" />
+    <Compile Include="Areas\Admin\Requirements\ViewModels\UserGroupTestViewModel.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\UserGroupViewModel.cs" />
     <Compile Include="Areas\Admin\Requirements\ViewModels\TokenSelectViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />

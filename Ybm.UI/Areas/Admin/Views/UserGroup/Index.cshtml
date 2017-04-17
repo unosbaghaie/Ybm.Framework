@@ -35,12 +35,13 @@
 
         <div class="panel-body main">
             <div dir="rtl">
-                @(Html.Kendo().Grid<Ybm.UI.Areas.Admin.Requirements.ViewModels.ErrorLogViewModel>()
-                      .Name("UserGroupGrid")
+                @(Html.Kendo().Grid<Ybm.UI.Areas.Admin.Requirements.ViewModels.UserGroupTestViewModel>()
+                      .Name("UserGroupTestGrid")
                       .Columns(columns =>
                       {
                           columns.Bound(p => p.Id);
-                          columns.Bound(p => p.Message);
+                          columns.Bound(p => p.FirstName);
+                          columns.Bound(p => p.LastName);
                           columns.Command(command =>
                           {
                               // command.Custom("ویرایش").Click("Update");

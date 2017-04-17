@@ -11,6 +11,7 @@ using Ybm.Common.Models;
 using Ybm.Framework;
 using Ybm.Framework.ExpressionHelper;
 using Ybm.UI.Areas.Admin.Requirements;
+using Ybm.UI.Areas.Admin.Requirements.ViewModels;
 
 namespace Ybm.UI.Areas.Admin.Controllers
 {
@@ -18,6 +19,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
     {
         // GET: Admin/UserGroup
         IUserGroupBusiness userGroupBiz = ServiceFactory.CreateInstance<IUserGroupBusiness>();
+        IUserBusiness userBiz = ServiceFactory.CreateInstance<IUserBusiness>();
 
 
 
@@ -38,11 +40,12 @@ namespace Ybm.UI.Areas.Admin.Controllers
         {
             get
             {
-                UserGroup q = new UserGroup();
+                UserGroupTestViewModel q = new UserGroupTestViewModel();
                 List<CustomFilterDescriptor> decriptors = Framework.ExpressionHelper.
-                    ExpressionBuilder.GetFilterFields<UserGroup>(
+                    ExpressionBuilder.GetFilterFields<UserGroupTestViewModel>(
                     new Tuple<Expression<Func<object>>, string>(() => q.Id, "شناسه"),
-                    new Tuple<Expression<Func<object>>, string>(() => q.Name, "نام")
+                    new Tuple<Expression<Func<object>>, string>(() => q.FirstName, "نام"),
+                    new Tuple<Expression<Func<object>>, string>(() => q.LastName, "نام خانوادگی")
                     );
 
                 return decriptors;
@@ -54,7 +57,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
             var filterData = FilterData;
             filterData.ForEach(q => q.Member = q.Member.Replace("FilterField_", ""));
             Framework.ExpressionHelper.ExpressionBuilder.SyncFilterData(filterData, selectedFilters);
-            var predicate = Framework.ExpressionHelper.ExpressionBuilder.MakeTheExpression<UserGroup>(filterData);
+            var predicate = Framework.ExpressionHelper.ExpressionBuilder.MakeTheExpression<UserGroupTestViewModel>(filterData);
             TempData["predicate"] = predicate;
             return Json(new { result = true });
         }
@@ -66,23 +69,35 @@ namespace Ybm.UI.Areas.Admin.Controllers
         //[ClaimBasedAuthorzation(TokenName = "پر کردن گیرید شکایات کاربر", ClaimType = "UserRight")]
         public virtual ActionResult Read([DataSourceRequest] DataSourceRequest request, byte? status = null)
         {
-            var lastMonth = DateTime.Now.AddMonths(-1);
-            Expression<Func<UserGroup, bool>> basePredicate = null;
+
+            var query = from ug in userGroupBiz.FetchMulti()
+                        join u in userBiz.FetchMulti() on ug.Id equals u.UserGroup_Id
+                        orderby u.Id
+                        select new UserGroupTestViewModel()
+                        {
+                            Id = u.Id,
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
+                            GroupName = ug.Name,
+                        };
 
             #region [IFilterable Predicate]
+
+            var lastMonth = DateTime.Now.AddMonths(-1);
+            Expression<Func<UserGroupTestViewModel, bool>> basePredicate = null;
+            
             if (TempData["predicate"] != null)
-                basePredicate = basePredicate.And((Expression<Func<UserGroup, bool>>)TempData["predicate"]);
+                basePredicate = basePredicate.And((Expression<Func<UserGroupTestViewModel, bool>>)TempData["predicate"]);
+
+            query = basePredicate == null ? query : query.Where(basePredicate);
+
             #endregion
 
-            IPagedList<UserGroup> list;
-            list = userGroupBiz.FetchMulti(
-                request.Page,
-                request.PageSize,
-                q => q.Id, basePredicate,
-                false);
-
-            var count = userGroupBiz.Count(basePredicate);
-            return Json(list.ToList().Select(q => q.GetViewModel()).ToDataSourceResult(request, count), JsonRequestBehavior.AllowGet);
+            var items = query.Skip((request.Page - 1) * request.PageSize).Take(request.PageSize).ToList();
+            var totalItemCount = query.Count();
+            IPagedList<UserGroupTestViewModel> list =  new StaticPagedList<UserGroupTestViewModel>(items, request.Page, request.PageSize, totalItemCount);
+            
+            return Json(list.ToList().ToDataSourceResult(request, totalItemCount), JsonRequestBehavior.AllowGet);
         }
     }
 }
