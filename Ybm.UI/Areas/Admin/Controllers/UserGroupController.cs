@@ -40,12 +40,11 @@ namespace Ybm.UI.Areas.Admin.Controllers
         {
             get
             {
-                UserGroupTestViewModel q = new UserGroupTestViewModel();
                 List<CustomFilterDescriptor> decriptors = Framework.ExpressionHelper.
-                    ExpressionBuilder.GetFilterFields<UserGroupTestViewModel>(
-                    new Tuple<Expression<Func<object>>, string>(() => q.Id, "شناسه"),
-                    new Tuple<Expression<Func<object>>, string>(() => q.FirstName, "نام"),
-                    new Tuple<Expression<Func<object>>, string>(() => q.LastName, "نام خانوادگی")
+                    ExpressionBuilder.GetFilterFields2(
+                    new MetaData<UserGroupTestViewModel>(a => a.Id, "شناسه"),
+                    new MetaData<UserGroupTestViewModel>(a => a.FirstName, "شناسه"),
+                    new MetaData<UserGroupTestViewModel>(a => a.LastName, "شناسه")
                     );
 
                 return decriptors;

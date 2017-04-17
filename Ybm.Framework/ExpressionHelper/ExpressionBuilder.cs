@@ -10,12 +10,76 @@ using System.Threading.Tasks;
 
 namespace Ybm.Framework.ExpressionHelper
 {
+
+
+    public class MetaData<T>
+    {
+        public MetaData(Expression<Func<T, object>> _property, string _propertyName)
+        {
+            property = _property;
+            propertyName = _propertyName;
+        }
+
+        public Expression<Func<T, object>>  property { get; set; }
+        public string propertyName { get; set; }
+    }
+
     public class ExpressionBuilder
     {
-        
+
+        public static List<CustomFilterDescriptor> GetFilterFields2<T>(params MetaData<T>[] property)
+        {
+
+
+            #region [code]
+            var entityType = typeof(T);
+            List<CustomFilterDescriptor> descriptors = new List<CustomFilterDescriptor>();
+            Expression<Func<T, bool>> ExpressionTree = null;
+            foreach (var propItem in property)
+            {
+                var p = propItem.property;
+
+                string propertyName = "";
+                Type propertyType;
+
+
+
+
+                var myVisitor = new MyExpressionVisitor();
+                // visit the expression's Body instead
+                myVisitor.Visit(p);
+
+
+                if (((LambdaExpression)(p as Expression)).Body is UnaryExpression)
+                {
+                    propertyName = ((MemberExpression)((UnaryExpression)((LambdaExpression)(p as Expression)).Body).Operand).Member.Name;
+                    propertyType = ((System.Reflection.PropertyInfo)(((MemberExpression)((UnaryExpression)((LambdaExpression)(p as Expression)).Body).Operand).Member)).PropertyType;
+                }
+                else
+                {
+                    propertyName = ((MemberExpression)((LambdaExpression)(p as Expression)).Body).Member.Name;
+                    propertyType = ((PropertyInfo)(((MemberExpression)((LambdaExpression)(p as Expression)).Body).Member)).PropertyType;
+                }
+                //descriptors.Add(new Kendo.Mvc.FilterDescriptor(propertyName, Kendo.Mvc.FilterOperator.IsEqualTo, GetDefault(propertyType)) { MemberType = propertyType });
+                descriptors.Add(new CustomFilterDescriptor()
+                {
+                    Member = "FilterField_" + propertyName,
+                    Operator = Kendo.Mvc.FilterOperator.IsEqualTo,
+                    Value = GetDefault(propertyType),
+                    MemberType = propertyType,
+                    Name = propItem.propertyName
+
+                });// (propertyName, Kendo.Mvc.FilterOperator.IsEqualTo, GetDefault(propertyType)) { MemberType = propertyType });
+            }
+            return descriptors;
+            #endregion
+        }
+
+
         public static List<CustomFilterDescriptor> GetFilterFields<T>(params Tuple<Expression<Func<Object>>,string>[] property)
         {
 
+            #region [code]
             var entityType = typeof(T);
             List<CustomFilterDescriptor> descriptors = new List<CustomFilterDescriptor>();
             Expression<Func<T, bool>> ExpressionTree = null;
@@ -54,7 +118,8 @@ namespace Ybm.Framework.ExpressionHelper
 
                 });// (propertyName, Kendo.Mvc.FilterOperator.IsEqualTo, GetDefault(propertyType)) { MemberType = propertyType });
             }
-            return descriptors;
+            return descriptors; 
+            #endregion
         }
         public static void SyncFilterData(List<CustomFilterDescriptor> filterData, Dictionary<string, string> selectedFilters)
         {
