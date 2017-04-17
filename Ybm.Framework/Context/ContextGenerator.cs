@@ -25,23 +25,24 @@ namespace Ybm.Framework.Context
 
            namespace Models
            {
-                public partial class OnlineShopContext : DbContext
+                public partial class YbmContext : DbContext
                 {
-                    static OnlineShopContext()
+                    static YbmContext()
                     {
-                        Database.SetInitializer<OnlineShopContext>(null);
+                        Database.SetInitializer<YbmContext>(null);
                     }
 
-                    public OnlineShopContext()
-                        : base(""Name = OnlineShopContext"")
+                    public YbmContext()
+                        : base(""Data Source=.;Initial Catalog=Ybm;User ID=sa;Password=AAaa123"")
                     {
                         }
                 ");
 
+            var pluralizeHelper = new PluralizeHelper();
 
             foreach (var entity in entities)
             {
-                code.AppendLine($@"public DbSet<{entity}> {entity}s {{ get; set; }}");
+                code.AppendLine($@"public DbSet<{entity}> {pluralizeHelper.Pluralize(entity)} {{ get; set; }}");
             }
 
             code.AppendLine(@"protected override void OnModelCreating(DbModelBuilder modelBuilder)");
@@ -84,7 +85,7 @@ namespace Ybm.Framework.Context
 
             parameters.GenerateExecutable = false;
             parameters.GenerateInMemory = false;
-            parameters.OutputAssembly = "OutputAssembly.dll";
+            parameters.OutputAssembly = "ProjectContext.dll";
 
             CompilerResults results = provider.CompileAssemblyFromSource(parameters, code.ToString());
 
