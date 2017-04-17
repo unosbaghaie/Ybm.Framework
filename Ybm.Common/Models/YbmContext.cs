@@ -23,7 +23,6 @@ namespace Ybm.Common.Models
         public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<ErrorType> ErrorTypes { get; set; }
         public DbSet<Page> Pages { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<TokenCategory> TokenCategories { get; set; }
         public DbSet<Token> Tokens { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
