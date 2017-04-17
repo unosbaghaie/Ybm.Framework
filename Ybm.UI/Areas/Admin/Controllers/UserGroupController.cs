@@ -42,7 +42,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
                 List<CustomFilterDescriptor> decriptors = Framework.ExpressionHelper.
                     ExpressionBuilder.GetFilterFields<ErrorLog>(
                     new Tuple<Expression<Func<object>>, string>(() => q.Id, "شناسه"),
-                    new Tuple<Expression<Func<object>>, string>(() => q.Name, "نام"),
+                    new Tuple<Expression<Func<object>>, string>(() => q.Name, "نام")
                     );
 
                 return decriptors;
