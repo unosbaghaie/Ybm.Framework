@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.Common", "Ybm.Common\Yb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.UI", "Ybm.UI\Ybm.UI.csproj", "{C749125C-CA80-456B-A22D-BAA67D3028BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvcApp1", "SampleMvcApp1\SampleMvcApp1.csproj", "{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountingTeam", "AccountingTeam", "{E80D9389-7631-4333-8E8D-25E8BC9D41B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AT.UI", "AT.UI\AT.UI.csproj", "{2285E27E-0A08-47E6-A40E-54B09C72BCDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,8 +47,16 @@ Global
 		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2285E27E-0A08-47E6-A40E-54B09C72BCDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2285E27E-0A08-47E6-A40E-54B09C72BCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2285E27E-0A08-47E6-A40E-54B09C72BCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2285E27E-0A08-47E6-A40E-54B09C72BCDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3} = {E80D9389-7631-4333-8E8D-25E8BC9D41B4}
+		{2285E27E-0A08-47E6-A40E-54B09C72BCDA} = {E80D9389-7631-4333-8E8D-25E8BC9D41B4}
 	EndGlobalSection
 EndGlobal

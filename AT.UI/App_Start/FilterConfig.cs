@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace SampleMvcApp1
+namespace AT.UI
 {
     public class FilterConfig
     {
