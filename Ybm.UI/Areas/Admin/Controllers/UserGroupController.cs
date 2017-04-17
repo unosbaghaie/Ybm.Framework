@@ -21,7 +21,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
 
 
 
-        // GET: Admin/ErrorLog
+        // GET: Admin/UserGroup
         public ActionResult Index()
         {
             #region [IFilterable View Data]
@@ -40,7 +40,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
             {
                 UserGroup q = new UserGroup();
                 List<CustomFilterDescriptor> decriptors = Framework.ExpressionHelper.
-                    ExpressionBuilder.GetFilterFields<ErrorLog>(
+                    ExpressionBuilder.GetFilterFields<UserGroup>(
                     new Tuple<Expression<Func<object>>, string>(() => q.Id, "شناسه"),
                     new Tuple<Expression<Func<object>>, string>(() => q.Name, "نام")
                     );
@@ -54,7 +54,7 @@ namespace Ybm.UI.Areas.Admin.Controllers
             var filterData = FilterData;
             filterData.ForEach(q => q.Member = q.Member.Replace("FilterField_", ""));
             Framework.ExpressionHelper.ExpressionBuilder.SyncFilterData(filterData, selectedFilters);
-            var predicate = Framework.ExpressionHelper.ExpressionBuilder.MakeTheExpression<ErrorLog>(filterData);
+            var predicate = Framework.ExpressionHelper.ExpressionBuilder.MakeTheExpression<UserGroup>(filterData);
             TempData["predicate"] = predicate;
             return Json(new { result = true });
         }
