@@ -12,6 +12,9 @@ namespace Ybm.UI
     {
         protected void Application_Start()
         {
+
+            App_Start.EmbeddedResourceVirtualPathProviderStart.Start();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -106,6 +106,13 @@
     <Compile Include="Configuration\StartupConfiguration.cs" />
     <Compile Include="CustomFilterDescriptor.cs" />
     <Compile Include="Db\EfCommandInterceptor.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\EmbeddedResource.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\EmbeddedResourceCacheControl.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\EmbeddedResourcePath.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\EmbeddedResourceVirtualDirectory.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\EmbeddedResourceVirtualFile.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\Logger.cs" />
+    <Compile Include="EmbeddedResourceVirtualPathProvider\Vpp.cs" />
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Engine\EventEngine.cs" />
     <Compile Include="Engine\IEngine.cs" />

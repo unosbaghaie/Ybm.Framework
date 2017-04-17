@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.Common", "Ybm.Common\Yb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ybm.UI", "Ybm.UI\Ybm.UI.csproj", "{C749125C-CA80-456B-A22D-BAA67D3028BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvcApp1", "SampleMvcApp1\SampleMvcApp1.csproj", "{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C749125C-CA80-456B-A22D-BAA67D3028BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C749125C-CA80-456B-A22D-BAA67D3028BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C749125C-CA80-456B-A22D-BAA67D3028BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{453F87AE-B1DB-457F-88F0-AC1C8C4566D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
