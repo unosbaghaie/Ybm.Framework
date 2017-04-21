@@ -13,7 +13,8 @@ namespace AT.Business.Concrete
     {
             public AtTestTableBusiness()
                 //: base(ContainerManager.Container.Resolve<YbmContext>())
-            {
+                : base(null)
+        {
                 base.PopulateEvents(this);
             }
         }
