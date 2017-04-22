@@ -86,3 +86,10 @@ a page to manage userGroups' Tokens is provided
             return View();
         }
     }
+    
+    
+_ All web pages and resources can be embeded to its dll and the framework provides them using VirtualPathProvider [in test period]
+
+
+_ One DbContext will bee generated for all projects to interact with database  [in test period]
+
