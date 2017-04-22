@@ -1,8 +1,7 @@
 Welcome to the Ybm.Framework description
 
-It is a framework to facilitate writing web based applications
+A framework based on .NET framework which facilitates Database related projects
 
-the first version is done at 2016/10/06 
 features:
 
 _ Instanciate Business layer classese in UI or Business itself
