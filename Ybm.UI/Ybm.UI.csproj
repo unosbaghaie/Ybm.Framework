@@ -248,6 +248,7 @@
     <Compile Include="Infrastructure\ViewModels\RegisterViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +323,10 @@
     <Content Include="app\lib\uiTemplate\js\velocity.min.js" />
     <Content Include="app\lib\uiTemplate\js\velocity.ui.min.js" />
     <Content Include="app\lib\uiTemplate\js\wijets.js" />
+    <Content Include="app\products\product-list.component.css" />
+    <Content Include="app\products\product-list.component.html" />
+    <Content Include="app\shared\star.component.css" />
+    <Content Include="app\shared\star.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -922,6 +927,7 @@
     <Content Include="Content\kendo\2016.2.504\images\kendoui.ttf" />
     <Content Include="Content\kendo\2016.2.504\images\kendoui.woff" />
     <Content Include="Areas\Admin\Views\UserGroup\Index.cshtml" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CKEditor\ckeditor.js" />
     <Content Include="Scripts\CKEditor\ckeditor.min.js" />
@@ -1549,6 +1555,8 @@
     <Content Include="Scripts\kendo\2016.2.504\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2016.2.504\kendo.webcomponents.min.js.map" />
     <Content Include="Scripts\kendo\2016.2.504\kendo.window.min.js.map" />
+    <Content Include="tsconfig.json" />
+    <Content Include="Views\Shared\_Layout - Angularjs1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1580,6 +1588,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\products\persianCurrency.pipe.ts" />
+    <TypeScriptCompile Include="app\products\product-filter.pipe.ts" />
+    <TypeScriptCompile Include="app\products\product-list.component.ts" />
+    <TypeScriptCompile Include="app\products\product.service.ts" />
+    <TypeScriptCompile Include="app\products\product.ts" />
+    <TypeScriptCompile Include="app\shared\star.component.ts" />
     <TypeScriptCompile Include="TypeScript\sample.ts" />
   </ItemGroup>
   <ItemGroup>

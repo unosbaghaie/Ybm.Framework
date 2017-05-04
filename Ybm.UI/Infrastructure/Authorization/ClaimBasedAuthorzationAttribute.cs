@@ -18,7 +18,7 @@ namespace Ybm.UI.Infrastructure.Authorization
 
         protected override bool AuthorizeCore(HttpContextBase context)
         {
-           
+            return true;
             var routeData = context.Request.RequestContext.RouteData;
             var currentController = routeData.GetRequiredString("controller"); //Example
             var currentAction = routeData.GetRequiredString("action"); //Index

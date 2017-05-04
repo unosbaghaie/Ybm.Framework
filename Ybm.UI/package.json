@@ -1,0 +1,25 @@
+{
+    "name": "asp-net-mvc5x-angular2x",
+    "version": "1.0.0",
+    "author": "DNT",
+    "description": "",
+    "scripts": {},
+    "license": "Apache-2.0",
+    "dependencies": {
+        "jquery": "2.2.3",
+        "angular2": "2.0.0-beta.15",
+        "systemjs": "^0.19.26",
+        "es6-promise": "^3.1.2",
+        "es6-shim": "^0.35.0",
+        "reflect-metadata": "0.1.2",
+        "rxjs": "5.0.0-beta.2",
+        "zone.js": "^0.6.12",
+        "bootstrap": "^3.3.6"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.9",
+        "typings": "^0.8.1"
+    },
+    "repository": {
+    }
+}

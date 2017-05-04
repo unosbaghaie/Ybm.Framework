@@ -1,8 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Ybm.Business;
-using Ybm.Common.Models;
+
 using Ybm.Framework.Aop;
 
 namespace Ybm.Framework
@@ -27,7 +26,7 @@ namespace Ybm.Framework
             //container.Register(Component.For<IUserGroupTokenBusiness>().ImplementedBy<UserGroupTokenBusiness>().LifestylePerWebRequest());
             //container.Register(Component.For<ITokenBusiness>().ImplementedBy<TokenBusiness>().LifestylePerWebRequest());
             //container.Register(Component.For<IUserGroupBusiness>().ImplementedBy<UserGroupBusiness>().LifestylePerWebRequest());
-            container.Register(Component.For<IAtTestTableBusiness>().ImplementedBy<ErrorLogBusiness>().LifestylePerWebRequest());
+            //container.Register(Component.For<IAtTestTableBusiness>().ImplementedBy<ErrorLogBusiness>().LifestylePerWebRequest());
 
         }
     }
