@@ -27,45 +27,14 @@
 
     <link href="~/app/lib/uiTemplate/css/styles.css" rel="stylesheet" />
 
-
-
-
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="~/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-    <script src="~/node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="~/node_modules/systemjs/dist/system-polyfills.js"></script>
-
-    <script src="~/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="~/node_modules/systemjs/dist/system.src.js"></script>
-    <script src="~/node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="~/node_modules/angular2/bundles/angular2.dev.js"></script>
-
-    <!-- Required for http -->
-    <script src="~/node_modules/angular2/bundles/http.dev.js"></script>
-
-    <!-- Required for routing -->
-    <script src="~/node_modules/angular2/bundles/router.dev.js"></script>
-
-    <!-- 2. Configure SystemJS -->
-    <script>
-        System.config({
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('app/main')
-              .then(null, console.error.bind(console));
-    </script>
-
-
-
+    <style>
+        [ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+    </style>
 </head>
-<body class="horizontal-nav animated-content infobar-overlay">
-    <div style="min-height:100%;" >
+<body class="horizontal-nav animated-content infobar-overlay" ng-app="app">
+    <div ng-controller="LayoutController" style="min-height:100%;" class="ng-cloak">
 
 
         <div id="wrapper">
@@ -97,9 +66,65 @@
                         </a>
                     </li>
 
-                    
+                    <li class="dropdown toolbar-icon-bg">
+                        <a href="#" class="hasnotifications dropdown-toggle" data-toggle="dropdown"><span class="icon-bg"><i class="material-icons">notifications</i></span><span class="badge badge-info"></span></a>
+                        <div class="dropdown-menu animated notifications">
+                            <div class="topnav-dropdown-header">
+                                <span style="display:block" class="rtl"> {{AlertCount}} پیام سیستمی خوانده   نشده </span>
+                            </div>
+                            <div class="scroll-pane has-scrollbar">
+                                <ul class="media-list scroll-content" tabindex="0" style="right: -17px;">
+                                    <li class="media notification-success" ng-repeat="item in Alerts" ng-click="showAlert($event)" data-id="{{item.Id}}">
+                                        <a href="#">
+                                            <div class="media-left">
+                                                <span class="notification-icon"><i class="material-icons">lock</i></span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="notification-heading">{{item.Subject}}  ‒{{item.Body}}</h4>
+                                                <span class="notification-time">{{item.TimeSince}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
 
-                   
+                                </ul>
+                                <div class="scroll-track"><div class="scroll-thumb" style="height: 218px; transform: translate(0px, 0px);"></div></div>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                @Html.ActionLink("مشاهده همه ی پیام های سیستمی", "Alert", "Message");
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown toolbar-icon-bg hidden-xs">
+                        <a href="#" class="hasnotifications dropdown-toggle" data-toggle="dropdown"><span class="icon-bg"><i class="material-icons">mail</i></span><span class="badge badge-info"></span></a>
+                        <div class="dropdown-menu animated notifications">
+                            <div class="topnav-dropdown-header">
+                                <span style="display:block" class="rtl"> {{MessageCount}} پیام خوانده   نشده </span>
+
+                            </div>
+                            <div class="scroll-pane has-scrollbar">
+                                <ul class="media-list scroll-content" tabindex="0" style="right: -17px;">
+                                    <li class="media notification-message" ng-repeat="item in UnreadMessages" ng-click="showMessage($event)" data-id="{{item.Id}}">
+                                        <a href="#">
+                                            <div class="media-left">
+                                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="notification-heading"><strong>{{item.Subject}}</strong> <span class="text-gray">‒{{item.Body}}.</span></h4>
+                                                <span class="notification-time">{{item.TimeSince}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="scroll-track"><div class="scroll-thumb" style="height: 124px; transform: translate(0px, 0px);"></div></div>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                @Html.ActionLink("مشاهده همه ی پیام ها", "Index", "Message");
+
+                            </div>
+                        </div>
+                    </li>
 
                     <li class="toolbar-icon-bg" id="trigger-infobar">
                         <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
@@ -117,7 +142,17 @@
                         <i class="fa fa-bars"></i>
                     </button>
                 </div>
-             
+                <div class="collapse navbar-collapse" id="horizontal-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown ng-cloak" ng-repeat="item in MenuItems" onfinishrender="test()" ng-cloak>
+                            <a href="#" class="dropdown-toggle"><i class="{{item.SelectorCssClass}}"></i> <span>{{item.PageName}}{{item.Parent_Id}} <i class="ml-xs fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown-menu subMenuParent">
+                                <li ng-repeat="sub in subMenu" ng-if="item.Id ==sub.ParentId "><a href="{{sub.PageHref}}">{{sub.Name}} </a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <div class="static-content-wrapper" id="mainContentC">
                 <div class="static-content">
@@ -134,7 +169,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         @RenderBody()
-                                        <pm-app>Loading App...</pm-app>
                                     </div>
                                 </div>
                             </div>
@@ -474,13 +508,11 @@
      -->
     <!-- Load page level scripts-->
     <!-- End loading page level scripts-->
-    
-
-
-
-
-
-
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.2.504/angular-route.js")"></script>
+    <script src="@Url.Content("~/app/js/app.js")"></script>
+    <script src="~/app/js/directives/dynamic.js"></script>
+    <script src="~/app/commonDirective/editInPlace.js"></script>
     <script src="@Url.Content("~/Scripts/kendo/2016.2.504/jszip.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.all.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo/2016.2.504/kendo.aspnetmvc.min.js")"></script>
@@ -496,11 +528,12 @@
 
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+    <script src="~/app/js/CustomGridActions.js"></script>
+    <script src="~/app/js/serviceBase.js"></script>
 
     @*<script src="~/Scripts/jquery.validate.min.js"></script>
         <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
-
+    <script src="~/app/js/serviceBaseAngular.js"></script>
     <script type="text/javascript">
 
         function getCurentControllerUrl(action) {
@@ -508,7 +541,10 @@
         }
 
     </script>
-    
+    <script src="~/app/areas/Shared/LayoutController.js"></script>
+    <script src="~/app/commonDirective/onfinishrender.js"></script>
+    <script src="~/app/lib/uiTemplate/js/pnotify.min.js"></script>
+    <script src="~/app/lib/uiTemplate/js/fileinput.min.js"></script>
 
     <script type="text/javascript">
         //document.getElementById('mainContentC').style.height = document.body.clientHeight - 170 + "px";
