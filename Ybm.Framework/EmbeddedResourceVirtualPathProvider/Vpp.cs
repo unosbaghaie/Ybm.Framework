@@ -163,7 +163,7 @@ namespace Ybm.Framework.EmbeddedResourceVirtualPathProvider
                     {
                         if (i == 0 && IsInt(resultFolder[i].ToString())) //if the first character is a int, then prefix
                             outs += "_";
-
+                        //ghj
                         outs += resultFolder[i];
 
                         //if any character follows a dot with a int, prefix with an underscore
