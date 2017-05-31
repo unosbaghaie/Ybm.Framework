@@ -128,6 +128,7 @@
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Extension\ExpressionExtensions.cs" />
     <Compile Include="Extension\IQueryableExtension.cs" />
+    <Compile Include="Extension\StringExtensions.cs" />
     <Compile Include="Identity2\ApplicationDbContext.cs" />
     <Compile Include="Identity2\ApplicationSignInManager.cs" />
     <Compile Include="Identity2\ApplicatioUserManager.cs" />

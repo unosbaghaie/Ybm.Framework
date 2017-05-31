@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Ybm.Common.Models;
 using Ybm.Common.Models.Mapping;
 using Ybm.Framework.Context;
+using Ybm.Framework.Extension;
 
 namespace TestConssoleApp
 {
