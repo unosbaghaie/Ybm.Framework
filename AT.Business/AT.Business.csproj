@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\AtTestTableBusiness.cs" />
+    <Compile Include="Config\ErrorLogBusiness.cs" />
     <Compile Include="Config\ServicesInstaller.cs" />
     <Compile Include="Interface\IAtTestTableBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

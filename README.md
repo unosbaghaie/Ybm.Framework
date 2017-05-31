@@ -1,8 +1,7 @@
 Welcome to the Ybm.Framework description
 
-It is a framework to facilitate writing web based applications
+A framework based on .NET framework which facilitates Database related projects
 
-the first version is done at 2016/10/06 
 features:
 
 _ Instanciate Business layer classese in UI or Business itself
@@ -87,3 +86,10 @@ a page to manage userGroups' Tokens is provided
             return View();
         }
     }
+    
+    
+_ All web pages and resources can be embeded to its dll and the framework provides them using VirtualPathProvider [in test period]
+
+
+_ One DbContext will bee generated for all projects to interact with database  [in test period]
+
